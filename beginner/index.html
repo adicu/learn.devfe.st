@@ -1,0 +1,2145 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+p{
+margin:1em 0;
+}
+
+img{
+max-width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+
+b, strong { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><style>/* to allow side-by-side code blocks */
+.join {
+	height: 0;
+	margin: 0;
+}
+.join + pre {
+	width: 45%;
+  float:left;
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+pre + pre {
+	display: inline-block;
+	width: 45%;
+	float: right;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+pre + .clear {
+	margin: 0;
+	height: 0;
+	clear: both;
+}
+ul ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* Fork me on Github*/
+img.github {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+/* headers and top links*/
+
+#top {
+  position: absolute;
+  top:0;
+}
+
+.top {
+  float:right;
+  padding-top: 20px;
+}
+
+/* "Responsive" */
+body {
+  width: 90%;
+  max-width: 50em;
+}
+
+/* make tables pretty */
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      border-bottom-width: 3px;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id,
+pre .coffeescript .params,
+pre .scss .preprocessor {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}</style><script>var hljs=new function(){function l(o){return o.replace(/&/gm,"&amp;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;")}function b(p){for(var o=p.firstChild;o;o=o.nextSibling){if(o.nodeName=="CODE"){return o}if(!(o.nodeType==3&&o.nodeValue.match(/\s+/))){break}}}function h(p,o){return Array.prototype.map.call(p.childNodes,function(q){if(q.nodeType==3){return o?q.nodeValue.replace(/\n/g,""):q.nodeValue}if(q.nodeName=="BR"){return"\n"}return h(q,o)}).join("")}function a(q){var p=(q.className+" "+q.parentNode.className).split(/\s+/);p=p.map(function(r){return r.replace(/^language-/,"")});for(var o=0;o<p.length;o++){if(e[p[o]]||p[o]=="no-highlight"){return p[o]}}}function c(q){var o=[];(function p(r,s){for(var t=r.firstChild;t;t=t.nextSibling){if(t.nodeType==3){s+=t.nodeValue.length}else{if(t.nodeName=="BR"){s+=1}else{if(t.nodeType==1){o.push({event:"start",offset:s,node:t});s=p(t,s);o.push({event:"stop",offset:s,node:t})}}}}return s})(q,0);return o}function j(x,v,w){var p=0;var y="";var r=[];function t(){if(x.length&&v.length){if(x[0].offset!=v[0].offset){return(x[0].offset<v[0].offset)?x:v}else{return v[0].event=="start"?x:v}}else{return x.length?x:v}}function s(A){function z(B){return" "+B.nodeName+'="'+l(B.value)+'"'}return"<"+A.nodeName+Array.prototype.map.call(A.attributes,z).join("")+">"}while(x.length||v.length){var u=t().splice(0,1)[0];y+=l(w.substr(p,u.offset-p));p=u.offset;if(u.event=="start"){y+=s(u.node);r.push(u.node)}else{if(u.event=="stop"){var o,q=r.length;do{q--;o=r[q];y+=("</"+o.nodeName.toLowerCase()+">")}while(o!=u.node);r.splice(q,1);while(q<r.length){y+=s(r[q]);q++}}}}return y+l(w.substr(p))}function f(q){function o(s,r){return RegExp(s,"m"+(q.cI?"i":"")+(r?"g":""))}function p(y,w){if(y.compiled){return}y.compiled=true;var s=[];if(y.k){var r={};function z(A,t){t.split(" ").forEach(function(B){var C=B.split("|");r[C[0]]=[A,C[1]?Number(C[1]):1];s.push(C[0])})}y.lR=o(y.l||hljs.IR,true);if(typeof y.k=="string"){z("keyword",y.k)}else{for(var x in y.k){if(!y.k.hasOwnProperty(x)){continue}z(x,y.k[x])}}y.k=r}if(w){if(y.bWK){y.b="\\b("+s.join("|")+")\\s"}y.bR=o(y.b?y.b:"\\B|\\b");if(!y.e&&!y.eW){y.e="\\B|\\b"}if(y.e){y.eR=o(y.e)}y.tE=y.e||"";if(y.eW&&w.tE){y.tE+=(y.e?"|":"")+w.tE}}if(y.i){y.iR=o(y.i)}if(y.r===undefined){y.r=1}if(!y.c){y.c=[]}for(var v=0;v<y.c.length;v++){if(y.c[v]=="self"){y.c[v]=y}p(y.c[v],y)}if(y.starts){p(y.starts,w)}var u=[];for(var v=0;v<y.c.length;v++){u.push(y.c[v].b)}if(y.tE){u.push(y.tE)}if(y.i){u.push(y.i)}y.t=u.length?o(u.join("|"),true):{exec:function(t){return null}}}p(q)}function d(D,E){function o(r,M){for(var L=0;L<M.c.length;L++){var K=M.c[L].bR.exec(r);if(K&&K.index==0){return M.c[L]}}}function s(K,r){if(K.e&&K.eR.test(r)){return K}if(K.eW){return s(K.parent,r)}}function t(r,K){return K.i&&K.iR.test(r)}function y(L,r){var K=F.cI?r[0].toLowerCase():r[0];return L.k.hasOwnProperty(K)&&L.k[K]}function G(){var K=l(w);if(!A.k){return K}var r="";var N=0;A.lR.lastIndex=0;var L=A.lR.exec(K);while(L){r+=K.substr(N,L.index-N);var M=y(A,L);if(M){v+=M[1];r+='<span class="'+M[0]+'">'+L[0]+"</span>"}else{r+=L[0]}N=A.lR.lastIndex;L=A.lR.exec(K)}return r+K.substr(N)}function z(){if(A.sL&&!e[A.sL]){return l(w)}var r=A.sL?d(A.sL,w):g(w);if(A.r>0){v+=r.keyword_count;B+=r.r}return'<span class="'+r.language+'">'+r.value+"</span>"}function J(){return A.sL!==undefined?z():G()}function I(L,r){var K=L.cN?'<span class="'+L.cN+'">':"";if(L.rB){x+=K;w=""}else{if(L.eB){x+=l(r)+K;w=""}else{x+=K;w=r}}A=Object.create(L,{parent:{value:A}});B+=L.r}function C(K,r){w+=K;if(r===undefined){x+=J();return 0}var L=o(r,A);if(L){x+=J();I(L,r);return L.rB?0:r.length}var M=s(A,r);if(M){if(!(M.rE||M.eE)){w+=r}x+=J();do{if(A.cN){x+="</span>"}A=A.parent}while(A!=M.parent);if(M.eE){x+=l(r)}w="";if(M.starts){I(M.starts,"")}return M.rE?0:r.length}if(t(r,A)){throw"Illegal"}w+=r;return r.length||1}var F=e[D];f(F);var A=F;var w="";var B=0;var v=0;var x="";try{var u,q,p=0;while(true){A.t.lastIndex=p;u=A.t.exec(E);if(!u){break}q=C(E.substr(p,u.index-p),u[0]);p=u.index+q}C(E.substr(p));return{r:B,keyword_count:v,value:x,language:D}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:l(E)}}else{throw H}}}function g(s){var o={keyword_count:0,r:0,value:l(s)};var q=o;for(var p in e){if(!e.hasOwnProperty(p)){continue}var r=d(p,s);r.language=p;if(r.keyword_count+r.r>q.keyword_count+q.r){q=r}if(r.keyword_count+r.r>o.keyword_count+o.r){q=o;o=r}}if(q.language){o.second_best=q}return o}function i(q,p,o){if(p){q=q.replace(/^((<[^>]+>|\t)+)/gm,function(r,v,u,t){return v.replace(/\t/g,p)})}if(o){q=q.replace(/\n/g,"<br>")}return q}function m(r,u,p){var v=h(r,p);var t=a(r);if(t=="no-highlight"){return}var w=t?d(t,v):g(v);t=w.language;var o=c(r);if(o.length){var q=document.createElement("pre");q.innerHTML=w.value;w.value=j(o,c(q),v)}w.value=i(w.value,u,p);var s=r.className;if(!s.match("(\\s|^)(language-)?"+t+"(\\s|$)")){s=s?(s+" "+t):t}r.innerHTML=w.value;r.className=s;r.result={language:t,kw:w.keyword_count,re:w.r};if(w.second_best){r.second_best={language:w.second_best.language,kw:w.second_best.keyword_count,re:w.second_best.r}}}function n(){if(n.called){return}n.called=true;Array.prototype.map.call(document.getElementsByTagName("pre"),b).filter(Boolean).forEach(function(o){m(o,hljs.tabReplace)})}function k(){window.addEventListener("DOMContentLoaded",n,false);window.addEventListener("load",n,false)}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=m;this.initHighlighting=n;this.initHighlightingOnLoad=k;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.BE={b:"\\\\[\\s\\S]",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(q,r){var o={};for(var p in q){o[p]=q[p]}if(r){for(var p in r){o[p]=r[p]}}return o}}();hljs.LANGUAGES.bash=function(a){var g="true false";var e="if then else elif fi for break continue while in do done echo exit return set declare";var c={cN:"variable",b:"\\$[a-zA-Z0-9_#]+"};var b={cN:"variable",b:"\\${([^}]|\\\\})+}"};var h={cN:"string",b:'"',e:'"',i:"\\n",c:[a.BE,c,b],r:0};var d={cN:"string",b:"'",e:"'",c:[{b:"''"}],r:0};var f={cN:"test_condition",b:"",e:"",c:[h,d,c,b],k:{literal:g},r:0};return{k:{keyword:e,literal:g},c:[{cN:"shebang",b:"(#!\\/bin\\/bash)|(#!\\/bin\\/sh)",r:10},c,b,a.HCM,h,d,a.inherit(f,{b:"\\[ ",e:" \\]",r:0}),a.inherit(f,{b:"\\[\\[ ",e:" \\]\\]"})]}}(hljs);hljs.LANGUAGES.cs=function(a){return{k:"abstract as base bool break byte case catch char checked class const continue decimal default delegate do double else enum event explicit extern false finally fixed float for foreach goto if implicit in int interface internal is lock long namespace new null object operator out override params private protected public readonly ref return sbyte sealed short sizeof stackalloc static string struct switch this throw true try typeof uint ulong unchecked unsafe ushort using virtual volatile void while ascending descending from get group into join let orderby partial select set value var where yield",c:[{cN:"comment",b:"///",e:"$",rB:true,c:[{cN:"xmlDocTag",b:"///|<!--|-->"},{cN:"xmlDocTag",b:"</?",e:">"}]},a.CLCM,a.CBLCLM,{cN:"preprocessor",b:"#",e:"$",k:"if else elif endif define undef warning error line region endregion pragma checksum"},{cN:"string",b:'@"',e:'"',c:[{b:'""'}]},a.ASM,a.QSM,a.CNM]}}(hljs);hljs.LANGUAGES.ruby=function(e){var a="[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?";var j="[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?";var g={keyword:"and false then defined module in return redo if BEGIN retry end for true self when next until do begin unless END rescue nil else break undef not super class case require yield alias while ensure elsif or include"};var c={cN:"yardoctag",b:"@[A-Za-z]+"};var k=[{cN:"comment",b:"#",e:"$",c:[c]},{cN:"comment",b:"^\\=begin",e:"^\\=end",c:[c],r:10},{cN:"comment",b:"^__END__",e:"\\n$"}];var d={cN:"subst",b:"#\\{",e:"}",l:a,k:g};var i=[e.BE,d];var b=[{cN:"string",b:"'",e:"'",c:i,r:0},{cN:"string",b:'"',e:'"',c:i,r:0},{cN:"string",b:"%[qw]?\\(",e:"\\)",c:i},{cN:"string",b:"%[qw]?\\[",e:"\\]",c:i},{cN:"string",b:"%[qw]?{",e:"}",c:i},{cN:"string",b:"%[qw]?<",e:">",c:i,r:10},{cN:"string",b:"%[qw]?/",e:"/",c:i,r:10},{cN:"string",b:"%[qw]?%",e:"%",c:i,r:10},{cN:"string",b:"%[qw]?-",e:"-",c:i,r:10},{cN:"string",b:"%[qw]?\\|",e:"\\|",c:i,r:10}];var h={cN:"function",bWK:true,e:" |$|;",k:"def",c:[{cN:"title",b:j,l:a,k:g},{cN:"params",b:"\\(",e:"\\)",l:a,k:g}].concat(k)};var f=k.concat(b.concat([{cN:"class",bWK:true,e:"$|;",k:"class module",c:[{cN:"title",b:"[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",r:0},{cN:"inheritance",b:"<\\s*",c:[{cN:"parent",b:"("+e.IR+"::)?"+e.IR}]}].concat(k)},h,{cN:"constant",b:"(::)?(\\b[A-Z]\\w*(::)?)+",r:0},{cN:"symbol",b:":",c:b.concat([{b:j}]),r:0},{cN:"symbol",b:a+":",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"number",b:"\\?\\w"},{cN:"variable",b:"(\\$\\W)|((\\$|\\@\\@?)(\\w+))"},{b:"("+e.RSR+")\\s*",c:k.concat([{cN:"regexp",b:"/",e:"/[a-z]*",i:"\\n",c:[e.BE,d]}]),r:0}]));d.c=f;h.c[1].c=f;return{l:a,k:g,c:f}}(hljs);hljs.LANGUAGES.diff=function(a){return{c:[{cN:"chunk",b:"^\\@\\@ +\\-\\d+,\\d+ +\\+\\d+,\\d+ +\\@\\@$",r:10},{cN:"chunk",b:"^\\*\\*\\* +\\d+,\\d+ +\\*\\*\\*\\*$",r:10},{cN:"chunk",b:"^\\-\\-\\- +\\d+,\\d+ +\\-\\-\\-\\-$",r:10},{cN:"header",b:"Index: ",e:"$"},{cN:"header",b:"=====",e:"=====$"},{cN:"header",b:"^\\-\\-\\-",e:"$"},{cN:"header",b:"^\\*{3} ",e:"$"},{cN:"header",b:"^\\+\\+\\+",e:"$"},{cN:"header",b:"\\*{5}",e:"\\*{5}$"},{cN:"addition",b:"^\\+",e:"$"},{cN:"deletion",b:"^\\-",e:"$"},{cN:"change",b:"^\\!",e:"$"}]}}(hljs);hljs.LANGUAGES.javascript=function(a){return{k:{keyword:"in if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const",literal:"true false null undefined NaN Infinity"},c:[a.ASM,a.QSM,a.CLCM,a.CBLCLM,a.CNM,{b:"("+a.RSR+"|\\b(case|return|throw)\\b)\\s*",k:"return throw case",c:[a.CLCM,a.CBLCLM,{cN:"regexp",b:"/",e:"/[gim]*",i:"\\n",c:[{b:"\\\\/"}]},{b:"<",e:">;",sL:"xml"}],r:0},{cN:"function",bWK:true,e:"{",k:"function",c:[{cN:"title",b:"[A-Za-z$_][0-9A-Za-z$_]*"},{cN:"params",b:"\\(",e:"\\)",c:[a.CLCM,a.CBLCLM],i:"[\"'\\(]"}],i:"\\[|%"}]}}(hljs);hljs.LANGUAGES.css=function(a){var b={cN:"function",b:a.IR+"\\(",e:"\\)",c:[a.NM,a.ASM,a.QSM]};return{cI:true,i:"[=/|']",c:[a.CBLCLM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:"font-face page"},{cN:"at_rule",b:"@",e:"[{;]",eE:true,k:"import page media charset",c:[b,a.ASM,a.QSM,a.NM]},{cN:"tag",b:a.IR,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[a.CBLCLM,{cN:"rule",b:"[^\\s]",rB:true,e:";",eW:true,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:true,i:"[^\\s]",starts:{cN:"value",eW:true,eE:true,c:[b,a.NM,a.QSM,a.ASM,a.CBLCLM,{cN:"hexcolor",b:"\\#[0-9A-F]+"},{cN:"important",b:"!important"}]}}]}]}]}}(hljs);hljs.LANGUAGES.xml=function(a){var c="[A-Za-z0-9\\._:-]+";var b={eW:true,c:[{cN:"attribute",b:c,r:0},{b:'="',rB:true,e:'"',c:[{cN:"value",b:'"',eW:true}]},{b:"='",rB:true,e:"'",c:[{cN:"value",b:"'",eW:true}]},{b:"=",c:[{cN:"value",b:"[^\\s/>]+"}]}]};return{cI:true,c:[{cN:"pi",b:"<\\?",e:"\\?>",r:10},{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style(?=\\s|>|$)",e:">",k:{title:"style"},c:[b],starts:{e:"</style>",rE:true,sL:"css"}},{cN:"tag",b:"<script(?=\\s|>|$)",e:">",k:{title:"script"},c:[b],starts:{e:"<\/script>",rE:true,sL:"javascript"}},{b:"<%",e:"%>",sL:"vbscript"},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:"[^ />]+"},b]}]}}(hljs);hljs.LANGUAGES.http=function(a){return{i:"\\S",c:[{cN:"status",b:"^HTTP/[0-9\\.]+",e:"$",c:[{cN:"number",b:"\\b\\d{3}\\b"}]},{cN:"request",b:"^[A-Z]+ (.*?) HTTP/[0-9\\.]+$",rB:true,e:"$",c:[{cN:"string",b:" ",e:" ",eB:true,eE:true}]},{cN:"attribute",b:"^\\w",e:": ",eE:true,i:"\\n|\\s|=",starts:{cN:"string",e:"$"}},{b:"\\n\\n",starts:{sL:"",eW:true}}]}}(hljs);hljs.LANGUAGES.java=function(a){return{k:"false synchronized int abstract float private char boolean static null if const for true while long throw strictfp finally protected import native final return void enum else break transient new catch instanceof byte super volatile case assert short package default double public try this switch continue throws",c:[{cN:"javadoc",b:"/\\*\\*",e:"\\*/",c:[{cN:"javadoctag",b:"@[A-Za-z]+"}],r:10},a.CLCM,a.CBLCLM,a.ASM,a.QSM,{cN:"class",bWK:true,e:"{",k:"class interface",i:":",c:[{bWK:true,k:"extends implements",r:10},{cN:"title",b:a.UIR}]},a.CNM,{cN:"annotation",b:"@[A-Za-z]+"}]}}(hljs);hljs.LANGUAGES.php=function(a){var e={cN:"variable",b:"\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*"};var b=[a.inherit(a.ASM,{i:null}),a.inherit(a.QSM,{i:null}),{cN:"string",b:'b"',e:'"',c:[a.BE]},{cN:"string",b:"b'",e:"'",c:[a.BE]}];var c=[a.BNM,a.CNM];var d={cN:"title",b:a.UIR};return{cI:true,k:"and include_once list abstract global private echo interface as static endswitch array null if endwhile or const for endforeach self var while isset public protected exit foreach throw elseif include __FILE__ empty require_once do xor return implements parent clone use __CLASS__ __LINE__ else break print eval new catch __METHOD__ case exception php_user_filter default die require __FUNCTION__ enddeclare final try this switch continue endfor endif declare unset true false namespace trait goto instanceof insteadof __DIR__ __NAMESPACE__ __halt_compiler",c:[a.CLCM,a.HCM,{cN:"comment",b:"/\\*",e:"\\*/",c:[{cN:"phpdoc",b:"\\s@[A-Za-z]+"}]},{cN:"comment",eB:true,b:"__halt_compiler.+?;",eW:true},{cN:"string",b:"<<<['\"]?\\w+['\"]?$",e:"^\\w+;",c:[a.BE]},{cN:"preprocessor",b:"<\\?php",r:10},{cN:"preprocessor",b:"\\?>"},e,{cN:"function",bWK:true,e:"{",k:"function",i:"\\$|\\[|%",c:[d,{cN:"params",b:"\\(",e:"\\)",c:["self",e,a.CBLCLM].concat(b).concat(c)}]},{cN:"class",bWK:true,e:"{",k:"class",i:"[:\\(\\$]",c:[{bWK:true,eW:true,k:"extends",c:[d]},d]},{b:"=>"}].concat(b).concat(c)}}(hljs);hljs.LANGUAGES.python=function(a){var f={cN:"prompt",b:"^(>>>|\\.\\.\\.) "};var c=[{cN:"string",b:"(u|b)?r?'''",e:"'''",c:[f],r:10},{cN:"string",b:'(u|b)?r?"""',e:'"""',c:[f],r:10},{cN:"string",b:"(u|r|ur)'",e:"'",c:[a.BE],r:10},{cN:"string",b:'(u|r|ur)"',e:'"',c:[a.BE],r:10},{cN:"string",b:"(b|br)'",e:"'",c:[a.BE]},{cN:"string",b:'(b|br)"',e:'"',c:[a.BE]}].concat([a.ASM,a.QSM]);var e={cN:"title",b:a.UIR};var d={cN:"params",b:"\\(",e:"\\)",c:["self",a.CNM,f].concat(c)};var b={bWK:true,e:":",i:"[${=;\\n]",c:[e,d],r:10};return{k:{keyword:"and elif is global as in if from raise for except finally print import pass return exec else break not with class assert yield try while continue del or def lambda nonlocal|10",built_in:"None True False Ellipsis NotImplemented"},i:"(</|->|\\?)",c:c.concat([f,a.HCM,a.inherit(b,{cN:"function",k:"def"}),a.inherit(b,{cN:"class",k:"class"}),a.CNM,{cN:"decorator",b:"@",e:"$"},{b:"\\b(print|exec)\\("}])}}(hljs);hljs.LANGUAGES.sql=function(a){return{cI:true,c:[{cN:"operator",b:"(begin|start|commit|rollback|savepoint|lock|alter|create|drop|rename|call|delete|do|handler|insert|load|replace|select|truncate|update|set|show|pragma|grant)\\b(?!:)",e:";",eW:true,k:{keyword:"all partial global month current_timestamp using go revoke smallint indicator end-exec disconnect zone with character assertion to add current_user usage input local alter match collate real then rollback get read timestamp session_user not integer bit unique day minute desc insert execute like ilike|2 level decimal drop continue isolation found where constraints domain right national some module transaction relative second connect escape close system_user for deferred section cast current sqlstate allocate intersect deallocate numeric public preserve full goto initially asc no key output collation group by union session both last language constraint column of space foreign deferrable prior connection unknown action commit view or first into float year primary cascaded except restrict set references names table outer open select size are rows from prepare distinct leading create only next inner authorization schema corresponding option declare precision immediate else timezone_minute external varying translation true case exception join hour default double scroll value cursor descriptor values dec fetch procedure delete and false int is describe char as at in varchar null trailing any absolute current_time end grant privileges when cross check write current_date pad begin temporary exec time update catalog user sql date on identity timezone_hour natural whenever interval work order cascade diagnostics nchar having left call do handler load replace truncate start lock show pragma exists number",aggregate:"count sum min max avg"},c:[{cN:"string",b:"'",e:"'",c:[a.BE,{b:"''"}],r:0},{cN:"string",b:'"',e:'"',c:[a.BE,{b:'""'}],r:0},{cN:"string",b:"`",e:"`",c:[a.BE]},a.CNM]},a.CBLCLM,{cN:"comment",b:"--",e:"$"}]}}(hljs);hljs.LANGUAGES.ini=function(a){return{cI:true,i:"[^\\s]",c:[{cN:"comment",b:";",e:"$"},{cN:"title",b:"^\\[",e:"\\]"},{cN:"setting",b:"^[a-z0-9\\[\\]_-]+[ \\t]*=[ \\t]*",e:"$",c:[{cN:"value",eW:true,k:"on off true false yes no",c:[a.QSM,a.NM]}]}]}}(hljs);hljs.LANGUAGES.perl=function(e){var a="getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime readpipe do return format read sprintf dbmopen pop getpgrp not getpwnam rewinddir qqfileno qw endprotoent wait sethostent bless s|0 opendir continue each sleep endgrent shutdown dump chomp connect getsockname die socketpair close flock exists index shmgetsub for endpwent redo lstat msgctl setpgrp abs exit select print ref gethostbyaddr unshift fcntl syscall goto getnetbyaddr join gmtime symlink semget splice x|0 getpeername recv log setsockopt cos last reverse gethostbyname getgrnam study formline endhostent times chop length gethostent getnetent pack getprotoent getservbyname rand mkdir pos chmod y|0 substr endnetent printf next open msgsnd readdir use unlink getsockopt getpriority rindex wantarray hex system getservbyport endservent int chr untie rmdir prototype tell listen fork shmread ucfirst setprotoent else sysseek link getgrgid shmctl waitpid unpack getnetbyname reset chdir grep split require caller lcfirst until warn while values shift telldir getpwuid my getprotobynumber delete and sort uc defined srand accept package seekdir getprotobyname semop our rename seek if q|0 chroot sysread setpwent no crypt getc chown sqrt write setnetent setpriority foreach tie sin msgget map stat getlogin unless elsif truncate exec keys glob tied closedirioctl socket readlink eval xor readline binmode setservent eof ord bind alarm pipe atan2 getgrent exp time push setgrent gt lt or ne m|0 break given say state when";var d={cN:"subst",b:"[$@]\\{",e:"\\}",k:a,r:10};var b={cN:"variable",b:"\\$\\d"};var i={cN:"variable",b:"[\\$\\%\\@\\*](\\^\\w\\b|#\\w+(\\:\\:\\w+)*|[^\\s\\w{]|{\\w+}|\\w+(\\:\\:\\w*)*)"};var f=[e.BE,d,b,i];var h={b:"->",c:[{b:e.IR},{b:"{",e:"}"}]};var g={cN:"comment",b:"^(__END__|__DATA__)",e:"\\n$",r:5};var c=[b,i,e.HCM,g,{cN:"comment",b:"^\\=\\w",e:"\\=cut",eW:true},h,{cN:"string",b:"q[qwxr]?\\s*\\(",e:"\\)",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\[",e:"\\]",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\{",e:"\\}",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\|",e:"\\|",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\<",e:"\\>",c:f,r:5},{cN:"string",b:"qw\\s+q",e:"q",c:f,r:5},{cN:"string",b:"'",e:"'",c:[e.BE],r:0},{cN:"string",b:'"',e:'"',c:f,r:0},{cN:"string",b:"`",e:"`",c:[e.BE]},{cN:"string",b:"{\\w+}",r:0},{cN:"string",b:"-?\\w+\\s*\\=\\>",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{b:"("+e.RSR+"|\\b(split|return|print|reverse|grep)\\b)\\s*",k:"split return print reverse grep",r:0,c:[e.HCM,g,{cN:"regexp",b:"(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",r:10},{cN:"regexp",b:"(m|qr)?/",e:"/[a-z]*",c:[e.BE],r:0}]},{cN:"sub",bWK:true,e:"(\\s*\\(.*?\\))?[;{]",k:"sub",r:5},{cN:"operator",b:"-\\w\\b",r:0}];d.c=c;h.c[1].c=c;return{k:a,c:c}}(hljs);hljs.LANGUAGES.json=function(a){var e={literal:"true false null"};var d=[a.QSM,a.CNM];var c={cN:"value",e:",",eW:true,eE:true,c:d,k:e};var b={b:"{",e:"}",c:[{cN:"attribute",b:'\\s*"',e:'"\\s*:\\s*',eB:true,eE:true,c:[a.BE],i:"\\n",starts:c}],i:"\\S"};var f={b:"\\[",e:"\\]",c:[a.inherit(c,{cN:null})],i:"\\S"};d.splice(d.length,0,b,f);return{c:d,k:e,i:"\\S"}}(hljs);hljs.LANGUAGES.cpp=function(a){var b={keyword:"false int float while private char catch export virtual operator sizeof dynamic_cast|10 typedef const_cast|10 const struct for static_cast|10 union namespace unsigned long throw volatile static protected bool template mutable if public friend do return goto auto void enum else break new extern using true class asm case typeid short reinterpret_cast|10 default double register explicit signed typename try this switch continue wchar_t inline delete alignof char16_t char32_t constexpr decltype noexcept nullptr static_assert thread_local restrict _Bool complex",built_in:"std string cin cout cerr clog stringstream istringstream ostringstream auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set unordered_map unordered_multiset unordered_multimap array shared_ptr"};return{k:b,i:"</",c:[a.CLCM,a.CBLCLM,a.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},a.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:b,r:10,c:["self"]}]}}(hljs);
+</script><script>hljs.initHighlightingOnLoad();</script><title>DevFest Beginner Track</title></head><body><a href="https://github.com/evantarrh/intro-to-websites"><img class="github" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a><p><link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'></p>
+<style>
+.major-key {
+  background-color: rgba(255, 215, 48, 0.4);
+  padding: 2px 0;
+  transition: 0.1s ease background-color;
+}
+
+.major-key:hover {
+  background-color: rgba(255, 215, 48, 0.7);
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+a {
+    color: #0088bd !important;
+}
+
+a:visited {
+    color: #0048ad !important;
+}
+
+a:hover {
+    color: #06f !important;
+}
+
+.extra-cool-text {
+  color: #42cbad;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.ALMIGHTY-GOLDEN-RATIO {
+    color: rgb(255, 215, 48) !important;
+}
+
+.ALMIGHTY-GOLDEN-RATIO:visited {
+    color: rgb(255, 215, 48) !important;
+}
+
+.font-size-1 {
+  font-size: 10px;
+  padding: 0;
+}
+
+.font-size-2 {
+  font-size: 18px;
+  padding: 0.25rem 0;
+}
+
+.font-size-3 {
+  font-size: 32px;
+  padding-bottom: 1rem;
+}
+
+.line-height-1 {
+  line-height: 1em !important;
+}
+
+.line-height-2 {
+  line-height: 2em !important;
+}
+
+.font-weight-1 {
+  font-weight: 400;
+}
+
+.font-weight-2 {
+  font-weight: 700;
+}
+
+.font-weight-3 {
+  font-weight: 900;
+}
+
+.font-style-1 {
+  font-style: italic;
+}
+
+.font-family-1 {
+  font-family: Times New Roman;
+}
+
+.font-family-2 {
+  font-family: Helvetica;
+}
+
+.font-family-3 {
+    font-family: Lato;
+}
+
+.color-1 {
+  color: #000;
+}
+
+.color-2 {
+  color: #00f;
+}
+
+.color-3 {
+  color: rgb(42, 136, 252);
+}
+
+</style>
+
+<p><a id="top"></a></p>
+<h1 id="from-zero-to-website">DevFest Beginner Development Track</h1>
+<p><em>Learn to build your own personal website! No programming experience required.</em></p>
+<p>Written and developed by <a href="http://evan.land">Evan Tarrh</a> and <a href="file:///Users/Ruth/Desktop/intro-to-websites/build/adi">ADI</a>.</p>
+<p><a href="#top" class="top" id="getting-started">Top</a></p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="what-will-i-learn">What will I learn?</h3>
+<p>We'll cover the fundamentals of HTML, CSS, and JavaScript. Once we've covered the basics, we'll use GitHub to deploy a personal site for the whole world to see.</p>
+<h3 id="what-do-i-need-to-get-started">What do I need to get started?</h3>
+<p>Before going through this tutorial, <strong>do these things</strong>:</p>
+<ul>
+<li>Register on <a href="//github.com">GitHub</a>. Plus, get your <a href="//education.github.com/pack">student
+    developer pack</a>! It will serve
+    you well.</li>
+<li>Download <a href="//www.sublimetext.com/3">Sublime Text</a>.</li>
+<li>Install and set up
+    <a href="https://help.github.com/articles/set-up-git/">Git</a>. In that guide,
+    all you have to do is the four steps inside “Setting up Git”, but
+    you can also follow the steps for authenticating with GitHub if
+    you're feeling adventurous.</li>
+</ul>
+<h3 id="ok-im-ready">OK, I'm ready!</h3>
+<p>Then let's go!</p>
+<p><a href="#top" class="top" id="table-of-contents">Top</a></p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#html">Level 1: HTML</a><ul>
+<li><a href="#intro-html">1.1 What does HTML look like?</a></li>
+<li><a href="#files">1.2 What should an HTML file look like?</a></li>
+<li><a href="#structure">1.3 How do we organize HTML files?</a></li>
+<li><a href="#inspector">1.4 How do we know what's going on in the browser?</a></li>
+<li><a href="#terms-html">1.5 HTML terms you should know</a></li>
+<li><a href="#project-html">1.6 A short project</a></li>
+</ul>
+</li>
+<li><a href="#css">Level 2: CSS</a><ul>
+<li><a href="#intro-css">2.1 What is CSS? What does it look like?</a></li>
+<li><a href="#selectors">2.2 Selectors</a></li>
+<li><a href="#text">2.3 How can I customize text with CSS?</a></li>
+<li><a href="#colors">2.4 How do colors work in CSS?</a></li>
+<li><a href="#position">2.5 How do I position elements on a page?</a></li>
+<li><a href="#colors">2.6 How do colors work in CSS?</a></li>
+<li><a href="#linking-css">2.7 How do I put CSS in my HTML file?</a></li>
+<li><a href="#terms-css">2.8 CSS terms you should know</a></li>
+<li><a href="#project-css">2.9 Explore the wonderful world of CSS</a></li>
+</ul>
+</li>
+<li><a href="#js">Level 3: JavaScript</a><ul>
+<li><a href="#console">3.1 JavaScript in the console</a></li>
+<li><a href="#console">3.2 JavaScript variables</a></li>
+<li><a href="#arrays">3.3 Grouping values with arrays</a></li>
+<li><a href="#jquery">3.4 jQuery is your friend</a></li>
+<li><a href="#selectors-jquery">3.5 Using jQuery selectors</a></li>
+<li><a href="#events">3.6 Handling events with jQuery is a major key</a></li>
+<li><a href="#jquery-css">3.7 Manipulating CSS with jQuery</a></li>
+<li><a href="#animation">3.8 Animating things with jQuery</a></li>
+<li><a href="#document-ready">3.9 <code>$(document).ready</code></a></li>
+<li><a href="#terms-js">3.10 JS terms you should know</a></li>
+<li><a href="#project-js">3.11 Very Serious Assignment</a></li>
+</ul>
+</li>
+<li><a href="#git">Level 4: Git</a><ul>
+<li><a href="#terminal">4.1 Navigation in the terminal</a></li>
+<li><a href="#intro-git">4.2 Creating and cloning your first repo</a></li>
+<li><a href="#committing">4.3 Committing changes to a project</a></li>
+<li><a href="#terms-git">4.4 Git terms you should know</a></li>
+<li><a href="#project-git">4.5 Do things with Git</a></li>
+</ul>
+</li>
+<li><a href="#next-steps">Level 5: Next Steps</a><ul>
+<li><a href="#flask">5.1 Using Flask to build web applications</a></li>
+<li><a href="#domains">5.2 Customizing your domain</a></li>
+<li><a href="#responsive">5.3 CSS Media Queries</a></li>
+<li><a href="#better-js">5.4 Better JavaScript</a></li>
+<li><a href="#favicons">5.5 Favicons</a></li>
+<li><a href="#ga">5.6 Google Analytics</a></li>
+<li><a href="#bootstrap">5.7 Bootstrap</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><a href="#top" class="top" id="html">Top</a></p>
+<h2 id="level-1-html">Level 1: HTML</h2>
+<p>HTML is the language of the Internet. Whenever you visit a website, what
+you see is the result of HTML being interpreted and rendered by your
+browser.</p>
+<p><a id="intro-html"></a></p>
+<h3 id="11-what-does-html-look-like">1.1 What does HTML look like?</h3>
+<p>It's simple!</p>
+<pre><code>&lt;p&gt;It's simple!&lt;/p&gt;
+</code></pre>
+<p>HTML is simply the content you see on the screen, with extra markup
+around it to help format it. In the example above, the
+<code>&lt;p&gt;</code> is an <strong>opening tag</strong> that denotes the start of a
+paragraph, and the <code>&lt;/p&gt;</code> closes the paragraph. The whole
+paragraph can be referred to as an <strong>element</strong>.</p>
+<p>HTML is more than just paragraphs, though. Let's get familiar with some
+more HTML elements!</p>
+<p><a id="headers"></a></p>
+<h4 id="headers">Headers</h4>
+<p>One of the best ways to create hierarchy is with <strong>headers</strong>. At the top
+of this page, the text "From Zero To Website" is actually an <code>h1</code>, so the code
+looks like <code>&lt;h1&gt;From Zero To Website&lt;/h1&gt;</code>.</p>
+<p><code>h1</code>'s are the biggest options for headers, but there are
+also <code>h2</code>'s and <code>h3</code>'s, all the way down to
+the rarely-used <code>h6</code>. For example, the bold "Headers" a
+couple of lines above is an <code>h4</code>.</p>
+<p><a id="links"></a></p>
+<h4 id="links">Links</h4>
+<p>We can use <strong>anchor tags</strong> to link to other pages!</p>
+<pre><code>&lt;a href="http://jumpman.space"&gt;Jumpman Jumpman Jumpman&lt;/a&gt;
+</code></pre>
+<p>The <code>href</code> attribute contains the URL that the link will
+send you to, and the content inside the tags is what the user actually
+sees. So, the code above ends up producing this:</p>
+<p><a href="http://jumpman.space">Jumpman Jumpman Jumpman</a></p>
+<p>If you're linking to another website, it's important to always include
+the <code>http://</code> at the beginning of the link inside the
+<code>href</code>.</p>
+<p>However, <span class="major-key">when you link to a different page on
+the same website, you should always omit both the
+<code>http://</code> and the base URL</span>—so, for example, if I
+wanted to link to <code>learn.devfe.st/data-science</code>, the tag
+should look like this: <code>&lt;a href="/data-science"&gt;</code>. This
+means that if you ever just want to link to the homepage (e.g.
+<code>learn.devfe.st</code>), the correct <code>href</code> is simply
+<code>href="/"</code>.</p>
+<p>Note that the <code>href</code> goes inside the tag itself! This
+isn't the only element for which this happens. Another great example is
+the <code>&lt;img&gt;</code> tag!</p>
+<p><a id="images"></a></p>
+<h4 id="the-img-tag">The <code>&lt;img&gt;</code> tag</h4>
+<p>It's actually really easy to put pictures on websites—there's a tag for
+that!</p>
+<p><img src="http://imgs.xkcd.com/comics/tags.png"></p>
+<pre><code>&lt;img src="http://imgs.xkcd.com/comics/tags.png"&gt;
+</code></pre>
+<p>Note that <code>&lt;img&gt;</code> tags do not need need a closing tag,
+i.e., <code>&lt;/img&gt;</code>.</p>
+<p>Also, note that the source of the image (a URL specifying the location
+of the image) goes inside the tag itself. This isn't the only
+<strong>attribute</strong> that can be specified inside the tag: we can also set the
+height and/or width of the image like this!</p>
+<pre><code>&lt;img src="http://imgs.xkcd.com/comics/tags.png" width="100%"&gt;
+
+&lt;img src="http://imgs.xkcd.com/comics/tags.png" height="300px"&gt;
+</code></pre>
+<p>There are several valid formats for these <code>height</code> and
+<code>width</code> attributes, which we'll cover in more detail in
+our section on CSS.</p>
+<p><a id="divs"></a></p>
+<h4 id="the-container-element-div">The container element: <code>&lt;div&gt;</code></h4>
+<p><code>&lt;div&gt;</code>'s are container elements. They offer a way to
+organize different HTML elements by <strong>nesting</strong>. In other words, a
+<code>&lt;div&gt;</code> will almost always contain other elements inside
+it, like so:</p>
+<pre><code>&lt;div&gt;
+    &lt;img src="http://imgs.xkcd.com/comics/tags.png" width="300px"&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Note that the <code>img</code> is indented in this code block. It's
+common practice to indent whenever an HTML element is <strong>nested</strong> inside
+another one. When this happens, we refer to the <code>div</code> as
+the <strong>parent</strong> element, and the <code>img</code> as the <strong>child</strong>.</p>
+<p><code>&lt;a&gt;</code> tags are another great example of an element that involves nesting. An <code>&lt;a&gt;</code>
+tag should always be nested inside a <code>&lt;p&gt;</code>, like so:</p>
+<pre><code>&lt;p&gt;
+  Check out this cool &lt;a href="https://youtu.be/ZerV5WcnBAo?t=2m19s"&gt;computer stuff&lt;/a&gt;!
+&lt;/p&gt;
+</code></pre>
+<p>That HTML will end up looking like this:</p>
+<blockquote>
+<p>Check out this cool <a href="https://youtu.be/ZerV5WcnBAo?t=2m19s">computer stuff</a>!</p>
+</blockquote>
+<p>As far as divs go, we'll learn more about them when we move on to styling
+our pages with CSS. For now, we can just think of them as organizational tools, to help separate our HTML into meaningful sections.</p>
+<p><a id="typographical-elements"></a></p>
+<h4 id="typographical-elements-strong-and-em">Typographical elements: <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code></h4>
+<p>For anyone who likes typography, this is the fun stuff! You can use tags
+to make your type <strong>bold</strong> or <em>italicized</em>.</p>
+<pre><code>&lt;strong&gt;I'm bold!&lt;/strong&gt;
+
+&lt;em&gt;I'm italicized!&lt;/em&gt;
+
+&lt;strong&gt;
+    &lt;em&gt;I'm bold and italicized!&lt;/em&gt;
+&lt;/strong&gt;
+
+&lt;em&gt;
+    &lt;strong&gt;I'm bold and italicized, too! The order doesn't matter here.&lt;/strong&gt;
+&lt;/em&gt;
+</code></pre>
+<p>This HTML will be rendered as:</p>
+<blockquote>
+<p><strong>I'm bold!</strong></p>
+<p><em>I'm italicized!</em></p>
+<p><em><strong>I'm bold and italicized!</strong></em></p>
+<p><em><strong>I'm bold and italicized, too! The order doesn't matter here.</strong></em></p>
+</blockquote>
+<p><a id="files"></a></p>
+<h3 id="what-should-an-html-file-look-like">What should an HTML file look like?</h3>
+<p>OK, we've already learned a lot! There are more useful HTML elements out
+there, but we still have a pretty good idea of what HTML looks like.
+Now, let's focus on how to use HTML in practice.</p>
+<p>Here's a very minimal skeleton. We can fill it out later once we start
+building our own pages!</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;!-- This is a comment. --&gt;
+
+        &lt;title&gt;Wow!&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Put all content here. --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Check it out! Let's look at this file line-by-line to understand it.</p>
+<ul>
+<li>
+<p><code>&lt;!DOCTYPE html&gt;</code></p>
+<p>Every HTML file must have exactly this as its first line. Otherwise,
+your browser won't know how to interpret the file.</p>
+</li>
+<li>
+<p><code>&lt;html&gt;</code></p>
+<p>Remember how you can nest HTML elements? Well, it turns out that
+every HTML file is nested inside one <code>html</code> element!
+This line of code is almost always the second line of code inside an
+HTML file, and it must contain exactly two children:
+<code>head</code> and <code>body</code>.</p>
+</li>
+<li>
+<p><code>&lt;head&gt;</code></p>
+<p>The <code>head</code> element contains information about the HTML
+page that is important, but shouldn't be rendered inside your
+browser alongside all the content. For example, this is how your
+browser knows what text to put in the tab (for this website, “From
+Zero to Website”), or the little icon next to it (the green J).</p>
+</li>
+<li>
+<p><code>&lt;!-- This is a comment --&gt;</code></p>
+<p><strong>Comments</strong> can help clarify confusing sections of code. They're a
+useful way to explain your code to someone else (most often, the
+“someone else” ends up being you 2 months later, so be nice to your
+future self).</p>
+<p>Comments must begin with <code>&lt;!--</code> and end with
+<code>--&gt;</code>.</p>
+</li>
+<li>
+<p><code>&lt;title&gt;Wow!&lt;/title&gt;</code></p>
+<p>The <code>title</code> is that small blob of text that's
+displayed in your browser's tab. It won't affect anything else on
+the page.</p>
+</li>
+<li>
+<p><code>&lt;/head&gt;</code></p>
+<p>Closing the <code>head</code> tag. The head must be closed before
+the body begins. …That's a weird sentence.</p>
+</li>
+<li>
+<p><code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code></p>
+<p>The <code>body</code> is where all of the content on the
+page goes. All of the tags we talked about
+before—<code>p</code>'s, <code>div</code>'s,
+<code>img</code>'s—go here!</p>
+</li>
+</ul>
+<p>That's what a basic HTML file should look like! We're only missing one
+thing—the name of the file. The only rule is that the file must end in
+<code>.html</code>. However, there is a special case:
+<code>index.html</code>. This will fold in nicely to our next
+mini-topic: the directory structure for websites.</p>
+<p><a id="structure"></a></p>
+<h3 id="how-do-we-organize-html-files">How do we organize HTML files?</h3>
+<p>This might be a little complicated, and it's hard to explain without
+looking at an example. So, let's use this website as an example! The
+<strong>root directory</strong> of this website is a folder called
+<code>learn.devfe.st/</code>, and it contains seven HTML files. Here are the
+files and their respective URLs:</p>
+<ul>
+<li><code>index.html</code> : <code>learn.devfe.st/</code></li>
+<li><code>index.html</code> : <code>learn.devfe.st/beginner-dev/index.html</code></li>
+<li><code>index.html</code> : <code>learn.devfe.st/data-science/index.html</code></li>
+<li><code>index.html</code> : <code>learn.devfe.st/game-dev/index.html</code></li>
+<li><code>index.html</code> : <code>learn.devfe.st/ios/index.html</code></li>
+<li><code>index.html</code> : <code>learn.devfe.st/product/index.html</code></li>
+<li><code>index.html</code> : <code>learn.devfe.st/webdev/index.html</code></li>
+</ul>
+<p>Isn't it weird that all of the HTML files are called <code>index.html</code>? <span class="major-key">When a folder
+contains a file named <code>index.html</code>, that is the default
+page that will be shown when you don't specify a file name.</span></p>
+<p>We could have built it so that the iOS track was contained in a file called <code>ios.html</code>, and then you could view the page by navigating to <code>learn.devfe.st/ios.html</code>—but it's cleaner to organize everything so that you only have to navigate to <code>learn.devfe.st/ios/</code>, which will automatically display the file at <code>learn.devfe.st/ios/index.html</code>.</p>
+<p>The directory
+structure looks something like this:</p>
+<pre><code>learn.devfe.st/
+  - index.html
+  - beginner-dev/
+    - index.html
+  - data-science/
+    - index.html
+  - game-dev/
+    - index.html
+  - ios/
+    - index.html
+  - product/
+    - index.html
+  - web-dev/
+    - index.html
+</code></pre>
+<p>In reality, there are other files apart from the HTML, so this is a little
+simplified. Still, this should help clarify the structure.</p>
+<p><a id="inspector"></a></p>
+<h3 id="how-do-we-know-whats-going-on-in-the-browser">How do we know what's going on in the browser?</h3>
+<p>We're almost ready to build out our own content! But first, we have an
+important tool to talk about.</p>
+<p>If something's broken on your site, how do you
+know what's happening? Or, maybe more interesting, if you see something
+awesome on another website, how do you find out why it looks the
+way it does?</p>
+<p>Fortunately, this problem has already been solved beyond our wildest
+dreams by very smart people! You can <strong>inspect element</strong> by
+right-clicking in Chrome, Safari, or Firefox. (In Safari, you might have
+to <a href="https://developer.apple.com/library/iad/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html">enable this
+manually</a>).</p>
+<p>You can also view the <strong>source code</strong> in
+<code>Tools &gt; Web Developer &gt; Source Code</code> in Firefox,
+<code>View &gt; Developer &gt; View Source</code> in Chrome, and
+<code>Develop &gt; Show Page Source</code> in Safari.</p>
+<p>Try viewing the source for this page now! You'll see some things that
+look familiar, and some things that might look a little bizarre. It's
+great practice to do this whenever you come across a website you really
+like and want to see what's going on under the hood.</p>
+<p><span class="major-key">If there's something you don't understand,
+Google it. Always. Every time.</span> Most of the learning we do as
+developers happens while we're on the job, or building something on our
+own, not from tutorials like this. Don't be afraid to explore and learn
+something new.</p>
+<p>Let's review some of the language we covered in this lesson. I know this
+might seem a little silly, but there's actually a great reason to focus
+on vocabulary, and it's not because I want to treat this like a middle
+school English class.</p>
+<p><span class="major-key">It is really important to be able to hold a
+technical conversation.</span> This is something I wish I'd learned
+earlier on in my life as a programmer! You'll be able to communicate
+much more easily with other developers if you understand these words and
+know when it's appropriate to use them.</p>
+<p><a id="terms-html"></a></p>
+<h3 id="terms-you-should-know">Terms you should know</h3>
+<dl>
+<dt>HTML</dt>
+<dd>Stands for HyperText Markup Language. A standard developed in 1991
+by Tim Berners-Lee.</dd>
+<dt>element</dt>
+<dd>A component of an HTML page. Every HTML page is made up of elements.</dd>
+<dt>tag</dt>
+<dd>The code that opens and closes HTML elements. <code>&lt;p&gt;</code> is
+an <strong>opening tag</strong>;<code>&lt;/p&gt;</code> is a <strong>closing tag</strong>.</dd>
+<dt>headers</dt>
+<dd>Also known as <strong>headings</strong>, although that terminology is
+getting outdated. Generally speaking, they describe the topic of
+a section. In decreasing order of priority, they go from
+<code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>.</dd>
+<dt>anchor tags</dt>
+<dd>More commonly known as links, represented by
+<code>&lt;a href="http://some-link.com"&gt;</code>.</dd>
+<dt>attribute</dt>
+<dd>A property of an HTML element, like the <code>href</code> in a
+link or the <code>src</code> in an image.</dd>
+<dt>nesting</dt>
+<dd>HTML elements can be <strong>nested</strong> inside one another.</dd>
+<dt>parent/child</dt>
+<dd>A <strong>child</strong> element is nested inside its <strong>parent</strong>.</dd>
+<dt>comment</dt>
+<dd>Helps to clarify your code. Only visible in the <strong>source code</strong>. In
+HTML, <code>&lt;!--</code> opens a comment and <code>--&gt;</code>
+closes a comment. Comments are formatted differently in
+every language.</dd>
+<dt>root directory</dt>
+<dd>The top folder in a file system.</dd>
+<dt>source code</dt>
+<dd>Raw code written by a programmer. HTML source code is viewable using
+the developer tools in your browser.</dd>
+<dt>inspect element</dt>
+<dd>You can <strong>inspect element</strong> using your browser to view the
+properties of a specific HTML element.</dd>
+</dl>
+<p><a id="project-html"></a></p>
+<h3 id="a-short-project">A short project</h3>
+<p>Now it's time to apply what you've learned! Let's build something fun.</p>
+<h4 id="getting-started_1">Getting started</h4>
+<p>Create a folder at the same level as your <code>Documents</code>
+folder. It will be your working directory for the remainder of this
+tutorial.</p>
+<p>Open up <a href="http://sublimetext.com">Sublime Text</a>. You should have
+downloaded this already, but if not, do so now!</p>
+<p>In Sublime Text, create a new file called <code>index.html</code> and
+save it inside your working directory.</p>
+<h4 id="working-on-the-file">Working on the file</h4>
+<p>You can view the HTML file in your browser by right-clicking and
+choosing "Open with...", then choosing your browser.</p>
+<p>Whenever you want to update your file, make sure you save the file!
+Saving is very important, not only to make sure your work doesn't
+disappear, but also because your browser will only display the most
+recently saved version.</p>
+<h4 id="checklist">Checklist</h4>
+<ul>
+<li>A header with your name in it.</li>
+<li>A picture of you. Or of your favorite pokémon. Or your least
+    favorite rapper.</li>
+<li>A paragraph describing yourself. Or your favorite pokémon, or least
+    favorite rapper.</li>
+<li>At least three links to other websites.</li>
+</ul>
+<hr />
+<p><a href="#top" class="top" id="css">Top</a></p>
+<h2 id="level-2-css">Level 2: CSS</h2>
+<p>Hopefully, you've recently finished building yourself a complete page in
+HTML. “But wait,” you say. “This isn't what real websites look like.
+This is what garbage websites look like!”</p>
+<p>Even if your HTML looks perfect, it's not enough on its own. Thankfully,
+we have CSS: a tool to help our websites not look like garbage.</p>
+<p><a id="intro-css"></a></p>
+<h3 id="what-is-css-what-does-it-look-like">What is CSS? What does it look like?</h3>
+<p><span class="major-key">CSS modifies properties of HTML elements.</span>
+Here's what it looks like:</p>
+<pre><code>p {
+    font-size: 20px;
+}
+</code></pre>
+<p>That snippet of CSS will set the font size of all paragraphs on an HTML
+page to 20 pixels.</p>
+<p>More generally, a CSS <strong>rule</strong> is formatted like this:</p>
+<pre><code>[selector] {
+    [property]: [value];
+    [property]: [value];
+    [any arbitrary number of property/value pairs]
+}
+</code></pre>
+<p>CSS has a strange learning curve, because almost none of the knowledge
+is conceptual; instead, learning CSS comes down to getting familiar with
+a lot of different properties one at a time, and trying a lot of
+different solutions when problems come up. Once again, Google will be
+your friend!</p>
+<p>In order to write CSS, we have to get familiar with <strong>selectors</strong>: the
+strings that determine which elements your CSS rules are applied to.</p>
+<pre><code>[selector] {
+    [property/value pairs]
+}
+</code></pre>
+<p><a id="selectors"></a></p>
+<h3 id="selectors">Selectors</h3>
+<p>There are a couple different ways we can specify HTML elements using
+selectors. Let's dive in!</p>
+<h4 id="element-type">Element type</h4>
+<p>In the first example on this page, the selector was just one character
+long: <code>p</code>. That selector means that the CSS rule applies
+to all <code>&lt;p&gt;</code>'s on the page.</p>
+<p>We can do the same thing with any HTML element: <code>a</code>,
+<code>h1</code>, <code>body</code>, you name it. However, it's
+important to note that <span class="major-key">many CSS rules will apply
+not only to the selected elements, but also to their children.</span>
+For example, check out the following rule:</p>
+<pre><code>body {
+    color: red; /* the "color" rule sets text color */
+}
+</code></pre>
+<p>This will make all of your website's text red, because all of the page's
+content is nested inside the <code>body</code>.</p>
+<h4 id="classes">Classes</h4>
+<p>What if you wanted a CSS rule to only apply to certain paragraphs?
+That's what <strong>classes</strong> are for! Check out this snippet of HTML and CSS:</p>
+<pre><code>&lt;body&gt;
+    &lt;p&gt;This is a normal paragraph.&lt;/p&gt;
+    &lt;p class="special"&gt;This paragraph is special, mmkay?&lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+<p>&nbsp;</p>
+<pre><code>p {
+    color: red;
+}
+
+.special {
+    font-size: 36px;
+}
+</code></pre>
+<p>A class is just another attribute of HTML elements. In order to use a
+class as a CSS selector, all you need to do is add a <code>.</code>
+to the beginning of the class name in your CSS.</p>
+<p>In the example above, both paragraphs will be red, because the
+<code>color: red</code> rule applies to every <code>&lt;p&gt;</code>
+element. But only the second paragraph will have a larger-than-normal
+font-size.</p>
+<p>You can apply any class to as many HTML elements as you want. Let's look
+at another example:</p>
+<pre><code>&lt;body&gt;
+    &lt;p&gt;I'm a normal paragraph.&lt;/p&gt;
+    &lt;p class="small"&gt;I am so small.&lt;/p&gt;
+    &lt;p class="small"&gt;I am so small.&lt;/p&gt;
+    &lt;p class="small"&gt;I am so small.&lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+<p>&nbsp;</p>
+<pre><code>p {
+    color: red;
+}
+
+.small {
+    color: blue;
+    font-size: 8px;
+}
+</code></pre>
+<p>Only the first paragraph will have a normal font-size; the last three
+will be super small.</p>
+<p>But what about their color? The last three paragraphs have two different
+rules that affect their color: all <code>&lt;p&gt;</code>'s have
+<code>color: red</code>, but all elements with the
+<code>small</code> class have <code>color: blue</code>. Will this
+break something?</p>
+<p>Nope—the last three paragraphs are all blue! CSS is smarter than you
+might think, and it knows that the <code>.small</code> rule is more
+specific than the rule that applies to all paragraphs. Therefore, if
+there are any conflicts for a specific HTML element, CSS follows the
+most specific rule that applies to it.</p>
+<h4 id="combining-selectors">Combining selectors</h4>
+<p>What if you wanted a rule to apply to multiple selectors? CSS makes that
+easy, too!</p>
+<pre><code>&lt;body&gt;
+    &lt;h1&gt;Pokemon are sick&lt;/h1&gt;
+    &lt;p class="big-red"&gt;Charizard&lt;/p&gt;
+    &lt;p class="big-blue"&gt;Blastoise&lt;/p&gt;
+    &lt;p class="big-green"&gt;Venusaur&lt;/p&gt;
+    &lt;p&gt;Digimon is for scrubs&lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+<p>&nbsp;</p>
+<pre><code>.big-red {
+    color: red;
+}
+
+.big-blue {
+    color: blue;
+}
+
+.big-green {
+    color: green;
+}
+
+h1, .big-red, .big-blue, .big-green {
+    font-size: 72px;
+}
+</code></pre>
+<p>You can use commas to combine selectors (both HTML element selectors
+like <code>h1</code> and class selectors like
+<code>big-red</code>). In this example, everything except the last
+paragraph has a font-size of <code>72px</code>.</p>
+<p>Now, we're ready to talk about the different kinds of properties you can
+set using CSS! There is a truly enormous number of them, so let's focus
+on three different categories: text, colors, and positioning.</p>
+<p><a id="text"></a></p>
+<h3 id="how-can-i-customize-text-with-css">How can I customize text with CSS?</h3>
+<p>Typography can be one of the most fun parts of building a website, if
+you are a nerd like me. Let's go through some relevant CSS properties to
+help make your text look excellent!</p>
+<h4 id="font-size">font-size</h4>
+<p>Sets the size of the text. There are several valid <strong>units</strong> for
+properties like this, but let's stick to <code>px</code>, because
+it's consistent and easy to use.</p>
+<p><span class="font-size-1">font-size: 10px;</span></p>
+<p><span class="font-size-2">font-size: 18px;</span></p>
+<p><span class="font-size-3">font-size: 32px;</span></p>
+<p>Generally, the most readable size for text is around 18 or 20
+<code>px</code>, but it will depend on the font and the context. Note
+that a little change goes a long way when it comes to pixels!</p>
+<h4 id="line-height">line-height</h4>
+<p>This attribute will control the <strong>line-height</strong> of your text. Again,
+we'll use <code>px</code> as units. To help show this visually, I've
+changed the <code>background-color</code> of these next paragraphs,
+which we'll talk about soon!</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>line-height: 16px;
+<span class="line-height-1">If your line-height is the same value as your font-size, it still might
+look cramped. If your line-height is the same value as your font-size, it still might
+look cramped. If your line-height is the same value as your font-size, it still might
+look cramped. If your line-height is the same value as your font-size, it still might
+look cramped. If your line-height is the same value as your font-size, it still might
+look cramped.</span></p>
+<p>line-height: 32px;
+<span class="line-height-2">Because double-spacing isn't just for making your essays hit ten pages!
+This can look awkward, too, though, so be careful. Because double-spacing isn't just for making your essays hit ten pages!
+This can look awkward, too, though, so be careful. Because double-spacing isn't just for making your essays hit ten pages!
+This can look awkward, too, though, so be careful.</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>Some people believe that the ideal line-height is (font-size × 1.618),
+which is the <a class="ALMIGHTY-GOLDEN-RATIO" href="https://en.wikipedia.org/wiki/Golden_ratio">golden
+ratio</a>.</p>
+<h4 id="font-weight">font-weight</h4>
+<p>Font-weight can be a finicky attribute, because it depends on the font
+you're using. The two most common values are <code>400</code> and
+<code>700</code> (no units), which translate to "normal" and "bold".</p>
+<p><span class="font-weight-1">font-weight: 400;</span></p>
+<p><span class="font-weight-2">font-weight: 700;</span></p>
+<h4 id="font-style">font-style</h4>
+<p>Font-style should be used as nothing more than an on/off switch for
+italics. Relevant values are <code>italic</code> and
+<code>normal</code>.</p>
+<p><em>font-style: italic;</em></p>
+<p>font-style: normal (default value);</p>
+<h4 id="font-family">font-family</h4>
+<p>Font-family might be the most important attribute, because it lets use
+choose our actual font! There are several built-in fonts that will work
+in any browser (of which Times New Roman is the most infamous), but we
+can do better than that.</p>
+<p><span class="font-family-1">font-family: Times New Roman</span></p>
+<p><span class="font-family-2">font-family: Helvetica</span></p>
+<p><span class="font-family-3">font-family: Lato</span></p>
+<p>Lato isn't a built-in font, but I can use it thanks to <a href="https://google.com/fonts">Google
+Fonts</a>. Google Fonts gives you free access to
+thousands of different fonts, and it's extremely useful. It's easy to
+use: once you select a font and some weights, all you have to do is
+insert an HTML snippet—which they provide for you—into your website's
+<code>head</code>! Here's the one I used to get that snippet:</p>
+<pre><code>&lt;link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'&gt;
+</code></pre>
+<p>That snippet of HTML is all I need to use Lato wherever I want on the website.</p>
+<p>Now that we have some typesetting skills, let's take a look at colors!
+Nothing in life is black and white, so your website shouldn't be either.</p>
+<p><a id="colors"></a></p>
+<h3 id="how-do-colors-work-in-css">How do colors work in CSS?</h3>
+<p>While it's possible to make a paragraph red using
+<code>color: red</code>, you will quickly find that that won't offer
+you a whole lot of creativity. CSS allows you to be much more specific
+than that!</p>
+<h4 id="rgb">RGB</h4>
+<p>There are several options for syntax, but a good alternative is <strong>RGB</strong>,
+where you specify a value between 0 and 255 for red, green, and blue.</p>
+<p><span class="color-1">color: rgb(0, 0, 0);</span></p>
+<p><span class="color-2">color: rgb(0, 0, 255);</span></p>
+<p><span class="color-3">color: rgb(42, 136, 252);</span></p>
+<p>Remember: <code>rgb(0, 0, 0)</code> is black and
+<code>rgb(255, 255, 255)</code> is white.</p>
+<h4 id="hex">Hex</h4>
+<p>You should also be familiar with <strong>hexadecimal notation</strong>, or more
+simply, <strong>hex values</strong> (or <strong>hex codes</strong>). Here's what it looks like:</p>
+<p><span class="color-1">color: #000000;</span></p>
+<p><span class="color-2">color: #0000FF;</span></p>
+<p><span class="color-3">color: #2A88FC;</span></p>
+<p>Hex codes work the same way as RGB, where red, green, and blue each get
+a value from 0 to 255. However, hex uses just two characters for each:
+they're numbers in <a href="https://en.wikipedia.org/wiki/Hexadecimal">base 16</a>.
+The second example above, <code>#0000FF</code>, translates to
+<code>rgb(0, 0, 255)</code>. The first two numbers,
+<code>00</code>, translate to a red value of 0; the second two
+numbers, <code>00</code>, translate to a green value of 0; and the
+final two numbers, <code>FF</code>, translate to a blue value of 255.</p>
+<h4 id="in-context">In context</h4>
+<p>Let's look at some examples of using colors in context.</p>
+<ul>
+<li>
+<p>Setting text color</p>
+<p>We've done this before! You can set text color just by using the
+<code>color</code> attribute.</p>
+<pre><code>.white-text {
+    color: rgb(255, 255, 255);
+}
+</code></pre>
+</li>
+<li>
+<p>Setting a background color</p>
+<p>Every element has a default background color of white, but it's easy
+to change. You can change the background of your whole website just
+by changing the <code>background-color</code> of the body.</p>
+<pre><code>body {
+    /* This will make your whole website neon green */
+    /* Not a great idea */
+    background-color: rgb(0, 255, 0);
+}
+</code></pre>
+</li>
+</ul>
+<p>We have one more topic of CSS attributes to cover: positioning.
+Positioning things using CSS can be frustrating, but you'll learn
+quickly! And by that I mean you'll quickly learn that CSS is completely
+unusable and broken forever. Welcome to the party.</p>
+<p><a id="position"></a></p>
+<h3 id="how-do-i-position-elements-on-a-page">How do I position elements on a page?</h3>
+<p>CSS gives us many tools to solve the problem of placing something on a
+page. Often, there are multiple solutions to the same problem.</p>
+<h4 id="position">Position</h4>
+<p><strong>Position</strong> is an important CSS attribute to understand. It only has a
+few possible values, but they are all very powerful. Let's look at the
+most relevant ones:</p>
+<ol>
+<li>
+<p><code>position: fixed</code></p>
+<p>This is the easiest position to work with. A fixed element stays in
+the same visual spot on your browser no matter what. Notice how the
+hamburger menu on the top left stays in the same place no matter
+where you're scrolling. That element is
+<code>position: fixed</code>!</p>
+<p>To use this, you also need to specify one or more of the following
+attributes: <code>top</code>, <code>bottom</code>,
+<code>left</code>, <code>right</code>. Here's an example of a
+button that will stay in the bottom right of the page:</p>
+<pre><code>.button {
+    position: fixed;
+    /* the bottom of the button will always be
+        20px from the bottom of the window */
+    bottom: 20px;
+    /* the right edge of the button will always be
+        20px from the right side of the window */
+    right: 20px;
+}
+</code></pre>
+</li>
+<li>
+<p><code>position: absolute</code></p>
+<p>This works a lot like <code>position: fixed</code>, except that
+instead of fixing an element to the window, it fixes an element to
+its parent, as long as the parent is
+<code>position: relative</code>. Once again, you'll generally
+need to also specify one or more of <code>top</code>,
+<code>bottom</code>, <code>left</code>, or
+<code>right</code>.</p>
+</li>
+<li>
+<p><code>position: relative</code></p>
+<p>Relatively positioned elements generally behave as you'd expect
+them to. When you specify any position on a relatively-positioned
+element (<code>left</code>, <code>right</code>, etc.),
+everything else is positioned by ignoring the changes to the
+relatively-positioned element. In other words,
+<code>position: relative</code> is a good way to change the
+position of only one element.</p>
+</li>
+</ol>
+<p>Position is a difficult attribute to visualize. I'd recommend checking
+out the
+<a href="https://css-tricks.com/almanac/properties/p/position/">CSS-Tricks</a> and
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">MDN</a>
+articles on position to get a better picture. In general, <span
+class="major-key"><a href="https://css-tricks.com">CSS-Tricks</a> and
+<a href="https://developer.mozilla.org/en-US/">MDN</a> are excellent references for
+anything CSS-related</span>. I always learn something when I read an
+article from them.</p>
+<h4 id="width-and-height">Width and Height</h4>
+<p>You can specify both the width and height of HTML elements using these
+attributes. Use either <code>px</code> or <code>%</code> as units.
+<span class="major-key">When using <code>%</code>, bear in mind that
+the percentage is computed as the percentage of the parent element's
+width or height</span>.</p>
+<pre><code>&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;p class="text"&gt;I am so tall&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>&nbsp;</p>
+<pre><code>.container {
+    height: 800px;
+}
+
+.text {
+    /* ends up being 800px, because its parent's height is 800px */
+    height: 100%;
+}
+</code></pre>
+<h4 id="text-align">Text-Align</h4>
+<p>This rule aligns text, like Microsoft Word or Google Docs. Possible
+values include <code>left</code>, <code>center</code>,
+<code>right</code>, and <code>justify</code>. Don't be a dingus,
+though—you should only ever use <code>left</code> and
+<code>center</code>.</p>
+<pre><code>&lt;body&gt;
+    &lt;div class="text-container"&gt;
+        &lt;p class="text"&gt;The Middle - Jimmy Eat World&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>&nbsp;</p>
+<pre><code>.text-container {
+    text-align: center;
+}
+</code></pre>
+<p>In the above example, note that we must set the paragraph's parent to
+<code>text-align: center</code>, not the paragraph itself!
+<code>Text-align</code> rules apply only to an element's children.</p>
+<h4 id="padding-and-margin">Padding and Margin</h4>
+<p>There's one more positioning trick we should be familiar with: using
+<strong>padding</strong> and <strong>margin</strong>. Units should be <code>px</code>.</p>
+<p>Padding adds space inside an element, and margin adds space around an
+element. Here's a helpful visualization:</p>
+<div class="image-wrapper">
+
+<img src="https://css-tricks.com/wp-content/csstricks-uploads/firebox.png">
+
+</div>
+
+<p>That model shows an HTML element with a <code>width</code> of
+<code>267px</code> and a <code>height</code> of
+<code>24px</code>. It has <code>6px</code> of
+<code>padding</code> on every side, no border or margin, and it has
+<code>top: 156px</code>. You can actually see this box model for any
+HTML element by right-clicking the element and choosing
+<code>inspect element</code>!</p>
+<p>You can put padding on specific sides of an element by using
+<code>padding-right</code>, <code>padding-top</code>,
+<code>padding-left</code>, and <code>padding-bottom</code>; same
+with margin. If the rule doesn't include a direction, like
+<code>margin: 5px;</code>, then it will apply <code>5px</code> of
+margin to every side of the element.</p>
+<p>Now that we've learned some useful CSS rules, we'll learn how to
+integrate a CSS file with our HTML!</p>
+<p><a id="linking-css"></a></p>
+<h3 id="how-do-i-put-css-in-my-html-file">How do I put CSS in my HTML file?</h3>
+<p>Just like HTML, you can write all of your CSS in one file, as long as
+you end the filename in <code>.css</code>. Create a folder called “css”
+and put the file there. Then, in your HTML file, link to the CSS file in
+the <code>head</code>, using the following syntax:</p>
+<pre><code>&lt;head&gt;
+    &lt;title&gt;How Website&lt;/title&gt;
+    &lt;!-- The href for the CSS will be different depending on
+        whether you put the CSS file in a new directory, which is
+        what I've done here. --&gt;
+    &lt;link rel="stylesheet" type="text/css" href="css/style.css"&gt;
+&lt;/head&gt;
+</code></pre>
+<p>A consequence of this is that you can have one CSS file for multiple
+HTML files. Here's what your directory structure should look like now:</p>
+<pre><code>website/
+  - css/
+    - style.css
+  - index.html
+</code></pre>
+<p>If you want to use Google Fonts (and you should!), <span
+class="major-key">you must import the font before
+importing the CSS file in your <code>head</code></span>, like so:</p>
+<pre><code>&lt;head&gt;
+    &lt;title&gt;Kylo Ren's Personal Blog&lt;/title&gt;
+    &lt;link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic' rel='stylesheet' type='text/css'&gt;
+    &lt;link rel="stylesheet" type="text/css" href="/css/style.css"&gt;
+&lt;/head&gt;
+</code></pre>
+<p>Wow, we covered a lot of content! Now let's learn some words.</p>
+<p><a id="terms-css"></a></p>
+<h3 id="css-terms">CSS terms</h3>
+<dl>
+<dt>CSS</dt>
+<dd>Short for Cascading Style Sheets. Nobody knows that, though, so
+don't bother remembering it.</dd>
+<dt>rule</dt>
+<dd>A complete snippet of CSS: a selector and a property-value pair.</dd>
+<dt>selector</dt>
+<dd>A string that specifies HTML elements.</dd>
+<dt>class</dt>
+<dd>A special HTML attribute that makes it easy to select a group of
+elements with CSS.</dd>
+<dt>unit</dt>
+<dd>Most CSS values require units, like <code>px</code> or
+<code>%</code>.</dd>
+<dt>line-height</dt>
+<dd>The vertical space taken up by each line of text in an HTML element.</dd>
+<dt>RGB</dt>
+<dd>A format for describing colors: <code>rgb(0, 0, 0)</code>. Each
+value can range from 0 to 255.</dd>
+<dt>Hex values/hex codes</dt>
+<dd>A more compact color format: <code>#00FF00</code>. Works the same
+way as RGB: the first two characters correspond to red, the next two
+correspond to blue, the last two correspond to green. Each pair of
+characters can range from <code>00</code> to <code>FF</code>.</dd>
+<dt>Position</dt>
+<dd>A property that determines how an element's position is calculated.
+You should be familiar with the values <code>fixed</code>,
+<code>relative</code>, and <code>absolute</code>.</dd>
+<dt>Padding</dt>
+<dd>Spacing between an element's content and its border.</dd>
+<dt>Margin</dt>
+<dd>Space outside of an element's border.</dd>
+</dl>
+<p><a id="project-css"></a></p>
+<h3 id="explore-the-wonderful-world-of-css">Explore the wonderful world of CSS</h3>
+<p>OK, let's goof around a little bit! I always find that when designing
+websites, and when using CSS in general, I get the best results when I
+try a lot of different things. So that's what we'll do now!</p>
+<p>For this mini-project, we'll be reusing the HTML page we created at the
+end of the last lesson.</p>
+<h4 id="getting-started_2">Getting started</h4>
+<p>Create a new folder called “css” inside the same folder that contains
+your HTML file, then create a new file inside “css”. You can call it
+<code>style.css</code> if you're boring like me.</p>
+<p>In your HTML file, link to the new CSS file in the <code>head</code>,
+using the <a href="#linking-css">snippet from above</a>. Add a simple rule to your CSS,
+like making all the text enormous, then save everything and refresh. If
+you can't see the change visually, be extra careful about your directory
+structure and make sure the file name is spelled right in the HTML
+(case-sensitive!).</p>
+<p>Once everything is linked properly, let's get started!</p>
+<h4 id="tasks">Tasks</h4>
+<p>These are all open-ended, so exploration is encouraged! If you get bored
+with something, move onto the next thing. The only goal here is to try
+enough things that you end up with something good and unexpected.</p>
+<p>Use <a href="https://google.com/fonts">Google Fonts</a> to try out a couple of
+different font options for your website.</p>
+<ul>
+<li>For each font, try a couple of different sizes and weights. Also,
+    try different combinations of header font-size and text font-size.</li>
+</ul>
+<p>Once you have a couple of different options for fonts, try at least four
+different color schemes, including background colors. Here are some
+suggestions:</p>
+<ol>
+<li>Use 4 different colors on your site</li>
+<li>Use only 2. This is actually really hard!</li>
+<li>Try a dark theme</li>
+<li>Try using the color scheme of your favorite-designed website.
+    <a href="https://buzzfeed.com">BuzzFeed</a> and <a href="https://lyft.com">Lyft</a> are
+    two great places to start.</li>
+</ol>
+<p>Try out at least 3 different layouts. You can follow these suggestions,
+or get creative!</p>
+<ol>
+<li>Try putting your links at the bottom of the page.</li>
+<li>Try putting everything in the middle of the page.</li>
+<li>Try filling the page with your image, using <a href="https://css-tricks.com/perfect-full-page-background-image/">this
+    guide</a>.</li>
+</ol>
+<p>Once you've finished trying everything, see if you can decide on two or
+three different themes for your site. Then, create a separate CSS file
+for each theme: that way, switching between themes on your HTML page
+will be as easy as changing the <code>link</code> snippet in the
+HTML!</p>
+<hr />
+<p><a href="#top" class="top" id="js">Top</a></p>
+<h2 id="level-3-javascript">Level 3: JavaScript</h2>
+<p>Believe it or not, we already have most of the tools we need to make a
+fully-functioning website. However, HTML and CSS impose some frustrating
+restrictions on web development that get completely blown away when you
+have some familiarity with JavaScript.</p>
+<p>It would be impossible to offer a complete course in JavaScript on one
+page of an introductory web development course, so let's take a little
+bit of a different approach to this. Instead of learning JavaScript
+concepts from the ground up, we'll learn how to do some cool things with
+an easy-to-use JavaScript <strong>library</strong> called <strong>jQuery</strong>.</p>
+<p>We'll cover a lot of ground in a short amount of time, and we'll come
+out on the other side of this lesson with some really, really cool
+tricks up our sleeves. Onwards and upwards!</p>
+<p><a id="console"></a></p>
+<h3 id="javascript-in-the-console">JavaScript in the Console</h3>
+<p>Let's start by opening up the <strong>console</strong>! To do this, inspect element
+anywhere on this page, then choose "console" from the tabs at the top of
+the inspector. Inside the console, type
+<code>console.log("Hello website!");</code>, and press enter.</p>
+<p>The console is like a little JavaScript sandbox. When you write
+JavaScript statements in the console, it gets interpreted just like any
+JavaScript that might have already been included on the website. That
+means <span class="major-key">the console is a great place to experiment
+with JavaScript</span>! Bear in mind that anything you do in the console
+only affects your current session in your browser. So, if you mess
+anything up super bad, you can always just refresh.</p>
+<p>You can open up the console on any website you visit! Because any
+JavaScript errors also get reported to the console, there might already
+be a lot of garbage inside the console, depending on the site. No matter
+what, though, you'll always be able to type things into the console and
+play around with the HTML on the website.</p>
+<p>You can also use <code>console.log</code> statements in JavaScript
+files. It'll print whatever you put inside the parentheses to the
+console.</p>
+<p>One last thing: you should run all of the JS snippets from this lesson
+in your console. If you want to live life to the fullest, try modifying
+each of the snippets a little bit after running them to make sure you
+understand what's happening and see what works.</p>
+<p><a id="variables"></a></p>
+<h3 id="javascript-variables">JavaScript variables</h3>
+<p>In JavaScript, we need to be familiar with the concept of a
+<strong>variable</strong>. Variables provide a way for us to store values.</p>
+<pre><code>var myFavoriteRapper = "Drake";
+console.log("My favorite rapper is " + myFavoriteRapper);
+</code></pre>
+<p>This is a short snippet of JavaScript, but there's a lot to talk about!
+Let's start by breaking the first line into five separate components.</p>
+<ol>
+<li>The <strong>keyword</strong> <code>var</code> indicates that we're
+    <strong>declaring</strong> a variable.</li>
+<li>The name <code>myFavoriteRapper</code> is how we'll refer to this
+    variable in the code after this line in our JavaScript file.</li>
+<li>The <code>=</code> sign is the assignment operator in JavaScript.
+    It stores whatever value is on the right side of the operator into
+    the variable on the left side.</li>
+<li><code>"Drake"</code> is the value being stored into the variable.</li>
+<li>The semicolon, <code>;</code>, indicates that the <strong>statement</strong>
+    is finished. Every JavaScript statement must end in a semicolon. For
+    now, we can think of a statement as being equivalent to a line
+    of code.</li>
+</ol>
+<p>The second line of code in that snippet should look familiar. We're just
+logging something to the console, but notice what's inside the
+parentheses:
+<code>"My favorite rapper is " + myFavoriteRapper</code>. This
+expression gets <strong>evaluated</strong> to the string "My favorite rapper is
+Drake", because you can add strings together with a + sign in
+JavaScript. <code>myFavoriteRapper</code> contains the string
+<code>"Drake"</code>, so JavaScript puts the two strings together; it
+doesn't care that one of the strings is stored in a variable.</p>
+<p>Now let's look at an extended version of this snippet.</p>
+<pre><code>var myFavoriteRapper = "Drake";
+console.log("My favorite rapper is " + myFavoriteRapper);
+myFavoriteRapper = "Kendrick";
+console.log("Just kidding. It's " + myFavoriteRapper + ".");
+</code></pre>
+<p>Now that we've already declared the <code>myFavoriteRapper</code>
+variable, we don't use the <code>var</code> keyword anymore when we
+want to change the variable's value. Now, when we use the variable in
+the last line, JavaScript evaluates it to the value to which it was most
+recently set: <code>"Kendrick"</code>.</p>
+<p>If you ran that snippet in the console, or put it in a JavaScript file,
+you would get the following output:</p>
+<pre><code>My favorite rapper is Drake
+Just kidding. It's Kendrick.
+</code></pre>
+<p><a id="arrays"></a></p>
+<h3 id="grouping-values-with-arrays">Grouping values with arrays</h3>
+<p>Before we take a look at all the tricks we can do with jQuery, we need
+to cover one more JavaScript fundamental: the <strong>array</strong>. Arrays are
+useful for storing groups of values, where it would be unwieldy to have
+a variable for every single one.</p>
+<pre><code>var numbers = [4, 8, 15, 16, 23, 42];
+console.log(numbers[1]);
+</code></pre>
+<p>In this example, <code>numbers</code> is a variable that stores an
+array that contains six values. We can access these values with the
+syntax <code>arrayName[index]</code>. So, the expression
+<code>numbers[1]</code> will evaluate to the whatever's stored at
+position 1 in in <code>numbers</code>.</p>
+<p>However, the thing that's stored at position 1 in
+<code>numbers</code> is actually <code>8</code>! That's because
+arrays are <strong>zero-indexed</strong> in JavaScript, meaning that the indices
+start at 0. So, to get the first element in <code>numbers</code>, we
+would need to write <code>numbers[0]</code>.</p>
+<hr />
+<p>Let's take a break for a second! We're going through these concepts
+really quickly. I'd recommend going back and rereading the JavaScript
+we've covered up until now, making sure you understand everything that's
+going on in the snippets.</p>
+<p>If you don't understand everything completely, please read Chapters
+<a href="http://eloquentjavascript.net/01_values.html">1</a> and
+<a href="http://eloquentjavascript.net/02_program_structure.html">2</a> of <a href="http://eloquentjavascript.net/">Eloquent
+JavaScript</a>. It offers a much more complete background to what we're
+doing now.</p>
+<p>If you do understand all the snippets, read Chapters 1 and 2 of Eloquent
+JS anyway! Read more if you have the time. Trust me when I say that it
+will serve you well in the long run.</p>
+<p>Also, it's OK if this stuff feels hard. JavaScript is such a vast and
+deep topic that it's impossible to get the hang of it quickly. Remember:
+if you meet anyone who says they're a JavaScript expert, they are either
+very very experienced or wrong.</p>
+<p>Once you feel like you're up to speed, we'll learn how to make it work
+with HTML!</p>
+<p><a id="linking-js"></a></p>
+<h3 id="putting-javascript-on-your-website">Putting JavaScript on your website</h3>
+<p>Inserting JavaScript into a website is pretty similar to linking to a
+CSS file. Use a <code>script</code> element to include your file
+right at the bottom of your <code>body</code>:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;!-- All your head attributes --&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Content goes here --&gt;
+        &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/index.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Note that, based on the <code>src</code> attribute of the
+<code>script</code>, <code>index.js</code> is inside a folder.
+This follows the same pattern we established in the CSS lesson: create a
+folder called <code>js</code> and put it at the same level as your
+<code>index.html</code>, so that any JavaScript files will live
+inside that new folder. Your files should now look like this:</p>
+<pre><code>website/
+  - css/
+    - style.css
+  - js/
+    - index.js
+  - index.html
+</code></pre>
+<p><a id="jquery"></a></p>
+<h3 id="jquery-is-your-friend">jQuery is your friend</h3>
+<p>jQuery makes JavaScript easier to use. With jQuery, selecting all the
+paragraphs on a page is as easy as <code>$('p')</code>, where the
+pure-JS analogue would look like
+<code>document.getAllElementsByTagName('p')</code>. Anytime you see
+or use a <code>$</code> in JavaScript, that means you're using some
+features from jQuery.</p>
+<p>Before we go any further, let's draw some hard lines about what jQuery
+is and how to use it.</p>
+<h4 id="what-jquery-actually-is">What jQuery Actually Is</h4>
+<p>In the introduction, I said that jQuery was a JavaScript library, but I
+didn't explain any further. What that means is that it's a collection of
+pre-written JavaScript utilities that abstract away a lot of the
+headaches caused by doing things in JS that feel like they should be
+easy, but end up being complex and annoying. jQuery isn't another
+programming language, even though it can feel like one sometimes. That
+means that you can use jQuery in normal JavaScript files, as long as you
+import the jQuery library on your website.</p>
+<h4 id="importing-jquery">Importing jQuery</h4>
+<p>There are a couple of ways to put jQuery on your website, but the one
+I'd recommend is by letting Google host it. This is actually the same
+way Google Fonts works: you just link to the content from Google before
+you link to your own code. Again, the snippet goes at the bottom of the
+<code>body</code>:</p>
+<pre><code>&lt;body&gt;
+    &lt;!-- Content goes here --&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="/js/index.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>OK! We're ready to do some wild things using jQuery and JavaScript.</p>
+<p><a id="selectors-jquery"></a></p>
+<h3 id="using-jquery-selectors">Using jQuery selectors</h3>
+<p>As I mentioned before, selecting all the paragraphs on the page is as
+easy as <code>$('p')</code> when you use jQuery. Selecting things in
+jQuery works a lot like CSS: you can select based on class names or tag
+names, and you can combine selectors with commas.</p>
+<pre><code>$('a')
+$('.major-key')
+$('h1, h2, h3, h4')
+</code></pre>
+<p>Each of these selections returns an array of HTML elements—just like
+arrays can contain numbers or strings, they can also contain more
+complex objects like HTML elements. For example,
+<code>$('a')[0]</code> would give you the first link on the page. Try
+this in the console now!</p>
+<p>This means that jQuery makes it really easy for us to manipulate a lot
+of HTML elements all at once. For example, we can change the content of
+HTML elements really easily. Try running the following line of code in
+your console:</p>
+<pre><code>$('code').html('lol');
+</code></pre>
+<p>(Unfortunately, there is no concept of an “undo” button in the console.
+Remember how I said you'll sometimes have to refresh to get things back
+to their original state?)</p>
+<p>There are other, less destructive things you can do with HTML in jQuery.
+Let's take a quick look now:</p>
+<pre><code>// Returns content of first HTML element that matches the selector
+$('code').html();
+
+// Inserts HTML snippet at end of element (inside the element)
+$('h3').append(' &lt;a href="https://www.youtube.com/watch?v=iZJXvjeWlVA"&gt;:O&lt;/a&gt;');
+
+// Inserts HTML snippet after element
+$('h3').after('&lt;p&gt;Time to learn!&lt;/p&gt;');
+</code></pre>
+<p>The opportunities are endless! The world is your oyster!</p>
+<p><a id="events"></a></p>
+<h3 id="wzxhzdk135handling-events-with-jquery-is-a-major-keywzxhzdk136"><span class="major-key">Handling events with jQuery is a major key</span></h3>
+<p>What we've seen so far makes it easy to do some silly things. But what
+if we could manipulate HTML elements depending on what the user does?
+Suddenly, we'd have a lot more power. That's what <strong>events</strong> are for!
+Let's take a look at an example.</p>
+<pre><code>$('code').on('click', function() {
+  $(this).html('wow lol');
+});
+</code></pre>
+<p>This is a snippet that changes the content of every
+<code>code</code> element when you click on it. Copy and
+paste it into the console to see what the effect is! Let's go through it
+carefully to understand what's really going on.</p>
+<pre><code>// For everything that matches this selector,   when you click it,   do this thing:
+$('.inline-code')·······························.on('click',········ function() {
+
+// Change only the clicked element's HTML content to   "wow lol".
+  $(this).html········································ ('wow lol');
+
+}); // (closing parens and braces as necessary)
+</code></pre>
+<p>Along with <code>click</code> events, there are some other events
+that are useful to know when building things with jQuery:</p>
+<ul>
+<li><code>dblclick</code>: double-click on an element</li>
+<li><code>mouseover</code>: user's mouse moves on top of an element</li>
+<li><code>mouseout</code>: user's mouse leaves an element</li>
+<li><code>mousemove</code>: user moves their mouse</li>
+<li><code>keydown</code>: user presses a key on their keyboard (to
+    trigger actions based on which key they pressed, check out
+    <a href="http://eloquentjavascript.net/14_event.html#c_HHTiM1P8JU">these</a>
+    <a href="http://unixpapa.com/js/testkey.html">references</a>!)</li>
+<li><code>scroll</code>: user scrolls (if you're viewing this on
+    Chrome on a desktop, there's a special effect on the page that
+    uses this!)</li>
+</ul>
+<p><a id="jquery-css"></a></p>
+<h3 id="manipulating-css-with-jquery">Manipulating CSS with jQuery</h3>
+<p>One of the most useful things you can do with jQuery is changing CSS
+based on certain events. Just like we can manipulate HTML content with
+<code>html</code>, we can change all kinds of CSS using
+<code>css</code>.</p>
+<pre><code>$('p').on('click', function() {
+  $(this).css({
+    "color": "#42cbad",
+    "font-weight": "700",
+    "line-height": "40px",
+  });
+});
+</code></pre>
+<p>Note that each property-value pair is in quotes, and goes inside curly
+braces (<code>{}</code>). Also, each pair has a comma after it,
+though the comma on the last pair is optional.</p>
+<p>One big disadvantage of this approach is that you can't bring any
+clicked element back to its original state. What if we wanted to just
+switch between styles on every click? There are some ways to do that
+with just JavaScript, but the most elegant solution involves CSS, too!</p>
+<pre><code>/* I included this in my CSS so that you could run the snippet below! */
+.extra-cool-text {
+  color: #42cbad;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+$('p').on('click', function() {
+  $(this).toggleClass('extra-cool-text');
+});
+</code></pre>
+<p>Now, instead of manipulating CSS attributes directly with JavaScript,
+we're just changing whether each element has a class applied to it.
+<code>toggleClass</code> is extremely useful.</p>
+<p><a id="animation"></a></p>
+<h3 id="animating-things-with-jquery">Animating things with jQuery</h3>
+<p>One of the most fun, and equally useless, things you can do with jQuery
+is animation! jQuery makes this incredibly easy. The code looks a lot
+like changing CSS, but you must also provide the number of milliseconds
+you want the animation to take.</p>
+<pre><code>$('h3').on('mouseover', function() {
+  $(this).animate({
+    "letter-spacing": "10px",
+    "font-size": "40px"
+  }, 1000);
+});
+</code></pre>
+<p>Tears of joy. You can also chain animations together to specify the order in which
+the animations happen, like this:</p>
+<pre><code>$('h3').on('mouseover', function() {
+  $(this).animate({ "font-size" : "40px" }, 400)
+  .animate({ "letter-spacing" : "10px" }, 1000);
+});
+</code></pre>
+<p>Note that I'm formatting the code a little differently in this snippet:
+I'm fitting more stuff on one line. That's because JavaScript doesn't
+care about whitespace or whether or not you have newlines (i.e. press
+return) between different statements. When you chain animations
+together, you might find it easier to read visually when you put each
+animation on its own line.</p>
+<p>You can also give the animation something called a <strong>callback</strong>
+function: some code that will run after the animation finishes. This is
+optional, and comes after the animation length, separated by a comma,
+like this:</p>
+<pre><code>// Run this in the console, then click me
+$('code').on('click', function() {
+  $(this).animate({
+    "height" : "0px",
+    "padding": "0px"
+  }, 400, function() {
+    $(this).html("");
+    alert("goodbye world"); // like console.log() but better
+  })
+});
+</code></pre>
+<p>You can put anything that's valid JavaScript inside of that callback
+function.</p>
+<p><a id="document-ready"></a></p>
+<h3 id="documentready"><code>$(document).ready</code></h3>
+<p>Before I send you off into the real world of jQuery silliness, I have
+one last piece of advice, and it's important.</p>
+<p>You can't safely manipulate any HTML until all of the content has
+actually been loaded. You'll experience some strange and frustrating
+bugs if you try to do so. But how do we know when the page is safe for
+JavaScript? It seems like a difficult problem.</p>
+<pre><code>$(document).ready(function() {
+  ...
+  // All JS code goes here!
+  ...
+});
+</code></pre>
+<p>Well, it is indeed a difficult problem, but it's not one you have to
+solve! This is another great feature of jQuery. As long as you put all
+of your code inside those beginning and ending lines, you'll never
+experience the pain of those problems.</p>
+<p>Cool! We've put together a pretty hilarious toolbox of effects with
+jQuery. Let's review some language from this lesson, then dive into a
+mini-project.</p>
+<p><a id="terms-js"></a></p>
+<h3 id="js-terms-you-should-know">JS terms you should know</h3>
+<dl>
+<dt>JavaScript</dt>
+<dd>A programming language for the web, created in May 1995 in 10 days
+by Brendan Eich.</dd>
+<dt>JavaScript library</dt>
+<dd>A collection of prewritten utilities in JavaScript.</dd>
+<dt>jQuery</dt>
+<dd>An all-purpose JavaScript library.</dd>
+<dt>console</dt>
+<dd>The browser's interface between you and JavaScript.</dd>
+<dt>keyword</dt>
+<dd>A reserved word in JavaScript (or any other programming language!).
+Examples of keywords would include <code>var</code> or
+<code>function</code>.</dd>
+<dt>variable</dt>
+<dd>A container that stores a value. Every variable has a name, assigned
+by the programmer.</dd>
+<dt>declaring a variable</dt>
+<dd>Creating a variable for the first time. Requires the
+<code>var</code> keyword.</dd>
+<dt>statement</dt>
+<dd>A complete JavaScript operation, analogous to a sentence.</dd>
+<dt>evaluate</dt>
+<dd>The process by which JavaScript determines an expression's value.</dd>
+<dt>array</dt>
+<dd>A structure that contains 0 or more values.</dd>
+<dt>zero-indexed</dt>
+<dd>Describes the convention that states that the first element in an
+array has an index of 0.</dd>
+<dt>event</dt>
+<dd>Any of several different user actions performed in the browser, e.g.
+<code>click</code>, <code>mouseover</code>,
+<code>mousemove</code>.</dd>
+<dt>callback</dt>
+<dd>A function that gets executed once the current function
+has finished.</dd>
+</dl>
+<p><a id="project-js"></a></p>
+<h3 id="very-serious-assignment">Very Serious Assignment</h3>
+<h4 id="getting-started_3">Getting started</h4>
+<p>To get started, make sure your directory structure looks like what we
+covered <a href="#linking">above</a>, and make sure your HTML file links to both
+jQuery and to your own JavaScript file.</p>
+<h4 id="your-mission">Your mission</h4>
+<p>Let's do some fun stuff with jQuery! Like all our assignments have been,
+this one will be pretty open-ended: all I ask is that you spend at least
+45 minutes goofing around with the effects we talked about. If you want
+some inspiration, here are some ideas!</p>
+<ul>
+<li>Make some links titled "Facebook", "Twitter", "LinkedIn"—normal
+    social media outlets or whatever. When the user clicks on the link,
+    though, instead of taking them to Facebook or Twitter or whatever
+    garbage company, just change the link's HTML content to be a
+    description of what the product does.</li>
+<li>Design your website so that when everything loads at first, all the
+    user sees is white. But over the course of one minute, your content
+    gradually fades in, ever so slowly.</li>
+<li>Make a "dark theme" button that toggles your website between light
+    and dark themes. See how I used that word "toggle"?</li>
+<li>Make a "sith mode" button that toggles your website between light
+    and dark themes, where the dark theme also replaces all your images
+    with pictures of Kylo Ren looking sad. (This one is a little harder,
+    but I put it here anyway because I really want to see it in
+    real life.)</li>
+</ul>
+<hr />
+<p><a href="#top" class="top" id="git">Top</a></p>
+<h2 id="level-4-git">Level 4: Git</h2>
+<p>From an early age, it is instilled into us that we must always
+<code>command-S</code> every chance we get, so that we don't lose
+precious work. But what if we want to work on two versions of a project
+simultaneously? Or we're working with 4 other people, all on the same
+file? Or 100 people? The need for <strong>version control</strong> is great, and Git
+is our savior.</p>
+<p>A long time ago, I told you to set up
+<a href="https://help.github.com/articles/set-up-git/">git</a> and register for
+<a href="https://github.com">GitHub</a>, so if you haven't already, do so now!
+You'll need them to get through the lesson; instead of going through
+content and then doing a mini-project at the end, this will be a little
+more interactive.</p>
+<p>Mac users, open your terminals; Windows users, open Command Prompt.
+Let's get to it!</p>
+<p><a id="terminal"></a></p>
+<h3 id="navigation-in-the-terminal">Navigation in the terminal</h3>
+<p>Before we start looking at Git, let's make sure we have enough knowledge
+about our terminal to be able to move around folders and files.</p>
+<h4 id="pwd"><code>pwd</code></h4>
+<p>If you're a Mac user, in your terminal, type <code>pwd</code> and
+press enter. This is the first of several <strong>commands</strong> we'll cover, and
+it shows you exactly where you are in your terminal. That's why the
+command is called <code>pwd</code>: it stands for Print Working
+Directory.</p>
+<p>Windows users won't have to worry about <code>pwd</code>, because
+Command Prompt will always show your complete location.</p>
+<p><span class="major-key">If you're ever confused or want to learn more
+about a specific command, just run <code>man [command]</code> on
+Macs, or <code>HELP [command]</code> on Windows</span>. For example,
+you can type <code>man ls</code> and you'll see more information than
+you'd ever want to know about <code>ls</code>! On Macs, you'll have
+to press <code>q</code> in order to exit the manual view.</p>
+<h4 id="ls"><code>ls</code></h4>
+<p>Once you've figured out what directory you're in inside your terminal,
+run <code>ls</code> (<code>dir</code> on Windows). You'll see a
+list of all the files and folders inside your current directory.</p>
+<h4 id="cd"><code>cd</code></h4>
+<p>Now that you can see all your files and folders, we'll talk about
+navigating between folders. If you've just run <code>ls</code> or
+<code>dir</code>, you'll be able to see a bunch of folders, like
+Documents and Downloads. Try running <code>cd Documents</code> now.
+This will bring you into the Documents folder, and you can
+<code>ls</code> or <code>dir</code> to see how poorly organized
+your Documents folder is.</p>
+<p>To get back to where you were, type <code>cd ..</code>:
+<code>..</code> always stands for the parent directory, and
+<code>.</code> always stands for the current directory.</p>
+<p>OK, now we're ready to get started with git!</p>
+<p><a id="intro-git"></a></p>
+<h3 id="creating-and-cloning-your-first-repo">Creating and cloning your first repo</h3>
+<p>First, login to GitHub and create a new <strong>repository</strong>. Name the
+repository [your-username].github.io, make it public, and check the box
+that says “Initialize this repository with a README”.</p>
+<p>Once you've created the repository (<strong>repo</strong> for short), GitHub will
+take you to the repo's freshly created page. Find the box on the page
+that contains a link, which should look something like <code>https://github.com/adicu/density.git</code>.</p>
+<p>Copy the link, then open your terminal, navigate to a folder where
+you're comfortable keeping coding projects, and run the following
+command:</p>
+<pre><code>git clone [link-you-copied]
+</code></pre>
+<p>This will copy the repository and all its contents onto your computer,
+and it'll create a new folder inside whatever folder you ran
+<code>git clone</code> from.</p>
+<p>You can do this with any project on GitHub, whether or not it belongs to
+you. People who use GitHub to store their projects are participating in
+<strong>open source</strong> development, so that everyone can contribute to everyone
+else's projects. Now you're entering into that world!</p>
+<p><a id="committing"></a></p>
+<h3 id="committing-changes-to-a-project">Committing changes to a project</h3>
+<p>While you should still be saving your work habitually, Git enables you
+to create certain checkpoints. Whenever you feel that you've completed a
+task, solved a problem, or you just want to save the work that you've
+done as a complete unit, you make a Git <strong>commit</strong>.</p>
+<p>There are a couple of different steps to doing this. First, let's get
+our repository to a state that's ready to be committed. Right now, if
+you <code>ls</code> or <code>dir</code> inside the directory you
+just cloned, there should only be one file: README.md. Let's fix that by
+adding an <code>index.html</code>! You can either reuse your HTML
+from our assignments or create something new, but it doesn't matter as
+long as you save it in your <code>username.github.io</code> folder.</p>
+<h4 id="git-status"><code>git status</code></h4>
+<p>Now, try running the following command: <code>git status</code>. Your
+terminal will respond with some information; importantly, it tells us
+that we have “untracked files”. Don't worry about the other information
+for now.</p>
+<p><code>git status</code> is a really important command, because it
+shows us what Git thinks the current state of the repository is. It's a
+powerful debugging tool, and also helps us understand what other git
+commands are actually doing behind the scenes.</p>
+<h4 id="git-add"><code>git add</code></h4>
+<p>Let's run another command: <code>git add index.html</code>. Now, if
+we run <code>git status</code> again, we'll see that we no longer
+have any untracked files; instead, we have a section called “Changes to
+be committed”, and it tells us that Git is now aware of a new file
+called <code>index.html</code>. <code>index.html</code> is now
+<strong>staged</strong> to be committed.</p>
+<p>You can stage all of the files in a directory by running
+<code>git add -A</code>.</p>
+<h4 id="git-commit"><code>git commit</code></h4>
+<p>So what does it mean for a file to be staged to be committed? It means
+that if we run <code>git commit</code>, our changes will be included
+in that commit, which, like I mentioned before, is essentially a
+checkpoint for our repo. Let's do this now by running
+<code>git commit -m "Create index.html"</code>. Whenever you make a
+commit, you include a commit message that explains the changes you've
+made, and it goes inside quotes after <code>-m</code>.</p>
+<h4 id="git-log"><code>git log</code></h4>
+<p>If you run <code>git log</code>, you'll see the entire history of
+your repository. Now that you've committed something, the log will
+contain two commits: the initial commit, made on GitHub, and your own
+commit, “Create index.html”.</p>
+<h4 id="git-push"><code>git push</code></h4>
+<p>So far, all of these commands have only been relevant to our local work.
+But the magic of Git is that it makes it really easy to share your code
+with other people and store it in one centralized location. Run
+<code>git push origin master</code> and watch the magic unfold! It'll
+print some garbage, like
+<code>Delta compression using up to 4 threads</code>, but what's
+important is that it gets your <strong>remote</strong> repository (i.e., GitHub's
+version) up to the same point as your local repo. The GitHub page for
+your repo will reflect the changes you've made.</p>
+<p><a id="workflow"></a></p>
+<h3 id="developing-a-git-workflow">Developing a Git workflow</h3>
+<p>These commands are all you need to maintain a repo on your own. <span
+class="major-key">You should develop a consistent workflow with
+Git, and it should look something like this</span>:</p>
+<ol>
+<li>Do some good work.</li>
+<li><code>git add</code>: Most of the time, you'll use
+    <code>git add -A</code>, but you can specify individual files if
+    need be.</li>
+<li><code>git commit -m "Extra informative commit message"</code></li>
+<li><code>git push origin master</code></li>
+<li>Repeat steps 1–4 until code is perfect</li>
+</ol>
+<h4 id="git-diff"><code>git diff</code></h4>
+<p>There's another command that will be helpful to you as you start to work
+with bigger and bigger files and projects. Running
+<code>git diff</code> will show the differences between the lines of
+code in your currently saved files and the code from your most recent
+commit. If you ever spend more than an hour working on something, you'll
+probably find yourself wondering what's actually changed and how it's
+changed before you want to <code>git add</code> anything. This is a
+great way to ensure that you're only committing exactly the code you
+want to commit.</p>
+<hr />
+<p>This lesson was a little shorter, but there's still a lot of technical
+language to learn!</p>
+<p><a id="terms-git"></a></p>
+<h3 id="git-terms-you-should-know">Git terms you should know</h3>
+<dl>
+<dt>Git</dt>
+<dd>A version control system developed by Linus Torvalds in 2005.</dd>
+<dt>version control</dt>
+<dd>Software that makes it easy to organize and control revisions.</dd>
+<dt>command</dt>
+<dd>A program you can run from the command line. You should be familiar
+with <code>pwd</code>, <code>ls</code> (or
+<code>dir</code>), <code>cd</code>, and <code>subl</code>.</dd>
+<dt>Repository (repo)</dt>
+<dd>A folder that contains a project that's tracked by Git.</dd>
+<dt>GitHub</dt>
+<dd>A platform that hosts Git projects and facilitates open
+source collaboration.</dd>
+<dt>staged</dt>
+<dd>Describes changes that are ready to be committed.
+<code>git add</code> stages your changes.</dd>
+<dt>commit</dt>
+<dd>A savepoint in Git history.</dd>
+<dt>remote</dt>
+<dd>A version of a Git project that is hosted on an outside network.
+GitHub contains the remote version of your username.github.io repo.</dd>
+<dt>Git commands to be familiar with:</dt>
+<dd>
+<ul>
+<li><code>git status</code>: current state of the git repo</li>
+<li><code>git add</code>: stage files for being committed</li>
+<li><code>git commit</code>: save all staged files into a
+    definitive savepoint</li>
+<li><code>git log</code>: shows commit history</li>
+<li><code>git push</code>: pushes local commits to remote</li>
+<li><code>git diff</code>: shows difference between repo and most
+    recent commit</li>
+</ul>
+</dd>
+</dl>
+<p><a id="project-git"></a></p>
+<h3 id="do-things-with-git">Do things with Git</h3>
+<p>Like I said before, it's really important to develop a consistent workflow with Git. So, now that your <code>index.html</code> has been committed, a great way to practice will be to commit the rest of the files you've worked on this week!</p>
+<h4 id="committing-the-rest-of-your-work">Committing the rest of your work</h4>
+<p>You should definitely review the workflow I outlined earlier. You'll need to copy the files and directory structure into your <code>[username].github.io</code> folder, then <code>add</code>, <code>commit</code>, and <code>push</code> everything.</p>
+<p>Once you've done this, navigate to <code>[username].github.io</code> in your browser: surprise!
+Now your website is live and viewable to anyone with an Internet connection.
+GitHub hosts a free website for all of its users, because they are an
+amazing company. If you're interested in customizing your domain name,
+we'll talk about it in the next section.</p>
+<hr />
+<p><a href="#top" class="top" id="next-steps">Top</a></p>
+<h2 id="level-5-next-steps">Level 5: Next Steps</h2>
+<p>Now that we've learned the basic skills needed to get a website out in
+the real world, let's cover some ways to make it better. A lot better.</p>
+<p>In no particular order....</p>
+<p><a id="flask"></a></p>
+<h3 id="using-flask-to-build-web-applications">Using Flask to build web applications</h3>
+<p>We've learned a lot of really useful skills over the past few lessons.
+However, in order to develop websites that provide services or generate
+content dynamically, knowledge of HTML, CSS, and JavaScript isn't quite
+enough!</p>
+<p><a href="http://flask.pocoo.org/">Flask</a> is a Python <strong>framework</strong> that makes it
+really easy to take the next step in your illustrious web development
+career. For a thorough look at Flask, I can't recommend ADI's own
+<a href="http://learn.devfe.st/webdev/">guide</a> to developing with Flask highly
+enough. There's no better way to start making fully-fledged web apps!</p>
+<p><a id="domains"></a></p>
+<h3 id="customizing-your-domain">Customizing your domain</h3>
+<p>To customize your website's domain name, it's as easy as 1, 2, 3i, 3ii!</p>
+<ol>
+<li>Go to <a href="https://namecheap.com">Namecheap</a> and buy a domain you like!
+    Remember, the <a href="https://education.github.com/pack/">GitHub student developer
+    pack</a> comes with a free
+    <code>.me</code> domain from Namecheap, in case you don't want to
+    spend any money.</li>
+<li>
+<p>In your <code>username.github.io</code> repo, at the same level
+    as <code>index.html</code>create a file called
+    <code>CNAME</code>. Inside that file, add just one line: your new
+    domain name, all lowercase, and nothing else. For example, if you buy <code>coolperson.me</code>, your
+    site's CNAME is just:</p>
+<pre><code>coolperson.me
+</code></pre>
+</li>
+<li>
+<p>In Namecheap, in your dashboard, click “Manage” on the domain name
+    you just bought. Then click on Advanced DNS from the tabs in the
+    middle of the page. Then, do the following:</p>
+<ol>
+<li>Use the red “Add new record” button to add two A Records, both
+    with host <code>@</code>, one with the IP address
+    <code>192.30.252.153</code>, the other with IP address
+    <code>192.30.252.154</code>.</li>
+<li>Use the red “Add new record” button to add a CNAME Record, with
+    host <code>www</code> and the value
+    <code>[username].github.io.</code>.
+    Don't
+    leave out the dot at the end of it!</li>
+</ol>
+</li>
+</ol>
+<p>You'll need to wait at least half an hour for the changes to finish, but
+after that, everything should work like you want it to.</p>
+<p><a id="responsive"></a></p>
+<h3 id="css-media-queries">CSS Media Queries</h3>
+<p>While you were designing your website, did you ever think about what it
+would look like on a phone? More and more people browser the internet
+using their phones, and it's our duty as web developers to make sure our
+websites' user experience is just as good on a phone or tablet.</p>
+<p>The best way to do this is in your CSS, with <strong>media queries</strong>! That's
+how this website looks passable on mobile.</p>
+<ul>
+<li><a href="http://learnlayout.com/media-queries.html">Here</a>'s a
+    quick introduction.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Here</a>'s
+    a great reference guide.</li>
+<li><a href="https://css-tricks.com/logic-in-media-queries/">Here</a> are some
+    interesting tricks if you want to get your brain working hard.</li>
+</ul>
+<p><a id="better-js"></a></p>
+<h3 id="better-javascript">Better JavaScript</h3>
+<p>Our JavaScript lesson was pretty long, but I still left out a lot of
+things that are really crucial for working on anything beyond a personal
+site.</p>
+<ol>
+<li>I've linked to <a href="http://eloquentjavascript.net">Eloquent JavaScript</a>
+    before, and I'll do it again. It's so important to have good
+    JavaScript fundamentals, and this website does by far the best job.
+    You should already have read chapters 1 and 2; maybe even more
+    important is <a href="http://eloquentjavascript.net/03_functions.html">Chapter
+    3</a>, functions.
+    Please read that!</li>
+<li>MDN also has an excellent <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">crash
+    course</a>
+    in all things JavaScript. It's much shorter than EloquentJS, but
+    still covers a lot of the important stuff.</li>
+</ol>
+<p><a id="favicons"></a></p>
+<h3 id="favicons">Favicons</h3>
+<p>Ever wonder how there's a little green J next to the
+<code>title</code> in your browser's tabs? It's called a <strong>favicon</strong>,
+and all the cool kids will have one on their personal sites.</p>
+<p>You can make one with <a href="http://www.favicon.cc/">this silly tool</a>, and
+store it at the same level as your <code>index.html</code> with the
+name <code>favicon.ico</code>.</p>
+<p>To use a <code>.png</code>, or to get more information about the
+rabbit hole that is the favicon, check out this <a href="https://github.com/audreyr/favicon-cheat-sheet">incredibly detailed
+guide</a>. Don't spend too
+much time there or your brain will explode.</p>
+<p><a id="ga"></a></p>
+<h3 id="google-analytics">Google Analytics</h3>
+<p>Why make a personal site if you can't have incredibly detailed
+information about how many people are visiting your website every day,
+where they're from, and what browser they're using? <a href="https://google.com/analytics">Google
+Analytics</a> is such a comically useful tool
+that every time I use it I'm amazed at how free it is.</p>
+<p>The guide on the Google Analytics site should be enough to get you
+started;
+<a href="https://support.google.com/analytics/answer/1008015?hl=en">here</a> is an
+extra-detailed guide in case you get stuck.</p>
+<p><a id="bootstrap"></a></p>
+<h3 id="bootstrap">Bootstrap</h3>
+<p>I love web design, but I recognize that not everyone shares my love for
+wrangling with CSS. If that sounds like you, you should check out
+<a href="https://getbootstrap.com">Bootstrap</a>: it's a <strong>CSS framework</strong>, which
+provides a lot of built-in styling that works well on all devices.</p>
+<ul>
+<li><a href="https://www.codecademy.com/courses/web-beginner-en-yjvdd/0/1">Here</a>
+    is a great way to get started with Bootstrap: a lesson from
+    Codecademy!</li>
+<li><a href="https://getbootstrap.com/getting-started/">Here</a>'s Bootstrap's own
+    “getting started” guide.</li>
+<li><a href="https://www.youtube.com/watch?v=YXVoqJEwqoQ">Here</a>'s a pretty
+    reasonable (if slightly out of date) video guide to getting started
+    with Bootstrap.</li>
+</ul>
+<hr />
+<p>This concludes the beginner development curriculum! Wow, huh?</p>
+<p>Thanks so much for reading all of this stuff. I hope you learned a lot and had fun. If you have any feedback for us, please let us know—we'd love to hear from you!</p>
+<script type="text/javascript">console.log("Hi! This is what happens when you console.log from inside a file.");</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+    var _gaq = _gaq || [];
+    var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-18504951-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>
