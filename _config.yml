@@ -1,13 +1,10 @@
-title: Your awesome title
-email: education@adicu.com
-description: > # this means to ignore newlines until "baseurl:"
-  A collection of all ADI-developed curriculum.
 baseurl: ""
-url: "learn.adicu.com"
+url: "learn.devfe.st"
 github_username: adicu
 exclude:
 - Gemfile
 - Gemfile.lock
+- README.md
 
 
 markdown: kramdown
