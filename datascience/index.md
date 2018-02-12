@@ -2,7 +2,7 @@
 layout: curriculum
 title: Data Science Track
 tagline: Learn to make meaningful observations about data sets using Python.
-source: "https://github.com/adicu/devfest-data-science"
+source: "https://github.com/adicu/data-science"
 ---
 
 
