@@ -563,7 +563,7 @@ print(format_tips[0])
 print(review_ids[0])
 ```
 
-    Come to Boba Guys and take the train to Strawberry Matcha heaven. 🍓
+    Come to Boba Guys and take the train to Strawberry Matcha heaven. 🍓🍵
     56d612c0498e1bd10360dca8
 
 
