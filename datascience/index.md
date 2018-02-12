@@ -2,8 +2,9 @@
 layout: curriculum
 title: Data Science Track
 tagline: Learn to make meaningful observations about data sets using Python.
-source: "https://github.com/adicu/devfest-data-science"
+source: "https://github.com/adicu/data-science"
 ---
+
 
 # Getting Started
 
@@ -14,43 +15,42 @@ We'll cover the fundamentals of data science through an in-depth exercise on a f
 
 ## What do I need to get started?
 
-But before we even get started, we have to set our environment up. This guide was written in Python 3.6. If you haven't already, download [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installing/). Next, you’ll need to install several packages that we’ll use throughout this tutorial on the command line in our project directory:
+But before we even get started, we have to set our environment up. This guide was written in Python 3.6. If you haven't already, download [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installing/). Once you have Python and Pip installed, clone [this repo](https://github.com/adicu/data-science) using Git as follows:
 
 ```
-sudo pip3 install googlemaps==2.4.6
-pip3 install geocoder==1.22.4
-pip3 install geojsonio==0.0.3
-pip3 install pandas==0.20.1
-pip3 install geocoder==1.22.4
-pip3 install geopandas==0.2.1
-pip3 install foursquare==1!2016.9.12
-pip3 install sklearn==0.0
-pip3 install Shapely==1.5.17.post1
+git clone https://github.com/adicu/data-science
 ```
 
-We'll be using the Google Maps and [Foursquare](https://developer.foursquare.com/docs/api/getting-started) APIs, so make sure to generate your API keys. Since we’ll be working with Python throughout, using the [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/install.html) is the best way to get the most out of this tutorial. Once you have your notebook up and running, you can download all the data for this post from [GitHub](https://github.com/adicu/devfest-data-science). Make sure you have the data in the same directory as your notebook and then we’re good to go! 
+
+Next, you'll need to install several packages that we'll use throughout this tutorial on the command line in our project directory:
+
+```
+pip install -r requirements.txt
+```
+
+We'll be using the [Google Maps](https://developers.google.com/maps/documentation/geocoding/get-api-key) and [Foursquare](https://developer.foursquare.com/docs/api/getting-started) APIs, so make sure to generate your API keys. Since we'll be working with Python throughout, using the [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/install.html) is the best way to get the most out of this tutorial. Once you have your notebook up and running, you can download all the data for this post from [GitHub](https://github.com/adicu/devfest-data-science). Make sure you have the data in the same directory as your notebook and then we're good to go! 
 
 
 ## A Quick Note on Jupyter
 
-For those of you who are unfamiliar with Jupyter notebooks, I’ve provided a brief review of which functions will be particularly useful to move along with this tutorial.
+For those of you who are unfamiliar with Jupyter notebooks, I've provided a brief review of which functions will be particularly useful to move along with this tutorial.
 
-In the image below, you’ll see three buttons labeled 1-3 that will be important for you to get a grasp of -- the save button (1), add cell button (2), and run cell button (3). 
+In the image below, you'll see three buttons labeled 1-3 that will be important for you to get a grasp of -- the save button (1), add cell button (2), and run cell button (3). 
 
 ![ alt text](https://www.twilio.com/blog/wp-content/uploads/2017/09/qwigKpOsph32AcwRNBGAPyPf885eso4nSOungzHEaJ5cZceEH6R9AwN9ZQi1UX2K4DWK2NvvQYA5napOIz-pcfg6YzdCqSNGQUPv9bR1poJ6Pd3nUrToZ1DP3wRHZhiE_DbFbLsz.png)
 
-The first button is the button you’ll use to **save your work** as you go along (1). Feel free to choose when to save your work. 
+The first button is the button you'll use to **save your work** as you go along (1). Feel free to choose when to save your work. 
 
-Next, we have the **“add cell”** button (2). Cells are blocks of code that you can run together. These are the building blocks of jupyter notebook because it provides the option of running code incrementally without having to to run all your code at once.  Throughout this tutorial, you’ll see lines of code blocked off -- each one should correspond to a cell. 
+Next, we have the **"add cell"** button (2). Cells are blocks of code that you can run together. These are the building blocks of jupyter notebook because it provides the option of running code incrementally without having to to run all your code at once.  Throughout this tutorial, you'll see lines of code blocked off -- each one should correspond to a cell. 
 
-Lastly, there’s the **“run cell”** button (3). Jupyter Notebook doesn’t automatically run it your code for you; you have to tell it when by clicking this button. As with add button, once you’ve written each block of code in this tutorial onto your cell, you should then run it to see the output (if any). If any output is expected, note that it will also be shown in this tutorial so you know what to expect. _Make sure to run your code as you go along because many blocks of code in this tutorial rely on previous cells._
+Lastly, there's the **"run cell"** button (3). Jupyter Notebook doesn't automatically run it your code for you; you have to tell it when by clicking this button. As with add button, once you've written each block of code in this tutorial onto your cell, you should then run it to see the output (if any). If any output is expected, note that it will also be shown in this tutorial so you know what to expect. _Make sure to run your code as you go along because many blocks of code in this tutorial rely on previous cells._
 
 
 
 ```python
-google_cli = 'AIzaSyAFK7MZydv-3IXIsf8JIX4Z8QxHqti7TcQ'
-fs_id = 'OZ4GERXJVNPFGXB0VXMYQCBH35GK33C403BIFDV4DNKQXHCW'
-fs_secret = 'M0DOJQ4NS125UCTKPRMXBYULHMRLHSZZ31RE2OUTKY33SPNM'
+google_cli = 'your-key'
+fs_id = 'your-key'
+fs_secret = 'your-key'
 ```
 
 # Background
@@ -79,9 +79,9 @@ Data Science has so much potential! By using data in creative and innovative way
 
 ## Visualizing Maps
 
-Anything in which location makes an impact on analysis or can be represented by location is likely going to be a geospatial problem. With different computational tools, we can create beautiful and meaningful visualizations that tell us about how location affects a given trend. To show this, we’ll use the python module `geojsonio` to visualize data across the United States. 
+Anything in which location makes an impact on analysis or can be represented by location is likely going to be a geospatial problem. With different computational tools, we can create beautiful and meaningful visualizations that tell us about how location affects a given trend. To show this, we'll use the python module `geojsonio` to visualize data across the United States. 
 
-Data typically comes in the form of a few fundamental data types: strings, floats, integers, and booleans. Geospatial data, however, uses a different set of data types for its analyses. Using the `shapely` module, we’ll review what these different data types look like.
+Data typically comes in the form of a few fundamental data types: strings, floats, integers, and booleans. Geospatial data, however, uses a different set of data types for its analyses. Using the `shapely` module, we'll review what these different data types look like.
 
 `shapely` has a class called `geometry` that contains different geometric objects. Using this module we'll import the needed data types:
 
@@ -121,7 +121,7 @@ print(type(p1))
     <class 'shapely.geometry.point.Point'>
 
 
-Next we have a **Polygon**, which is a two-dimensional surface that’s stored as a sequence of points that define the exterior. Because a polygon is composed of multiple points, the `shapely` polygon object takes a list of tuples as a parameter.
+Next we have a **Polygon**, which is a two-dimensional surface that's stored as a sequence of points that define the exterior. Because a polygon is composed of multiple points, the `shapely` polygon object takes a list of tuples as a parameter.
 
 
 ```python
@@ -227,7 +227,7 @@ geocoder.google("2920 Broadway, New York, NY 10027")
 
 
 
-    <[OK] Google - Geocode [Alfred Lerner Hall, 2920 Broadway, New York, NY 10027, USA]>
+    <[OK] Google - Geocode [11 Waverly Pl, New York, NY 10003, USA]>
 
 
 
@@ -238,11 +238,7 @@ This geospatial object has multiple attributes you can utilize, which you can re
 geocoder.google("2920 Broadway, New York, NY 10027").lat
 ```
 
-
-
-
-    40.8069421
-
+    40.7301485
 
 
 
@@ -253,7 +249,7 @@ geocoder.google("2920 Broadway, New York, NY 10027").lng
 
 
 
-    -73.9639939
+    -73.9940771
 
 
 
@@ -373,6 +369,9 @@ Great! Now let's use `geojsonio` for some boba fun! Now that we have all our hel
 
 
 ```python
+from geopandas import GeoDataFrame
+from geojsonio import display
+
 class BubbleTea(object):
     
     # authentication initialized
@@ -431,7 +430,13 @@ The longest part is over! Now we're ready for our awesome boba map:
 boba.visualize()
 ```
 
+The map should have opened up in a new tab in your browser. You can use this map to embed on a website or in a GitHub gist, as shown [here](https://gist.github.com/lesley2958/b10774fa2e3903ee078b8619d8c14be5). The combination of these modules we used makes for a fast and easy way of creating map visualizations. 
+
 ## Checkpoint 1
+
+Using `geojsonio` and GitHub Gists, create a GitHub Gist of the visualization on your own account! 
+
+**Hint**: To do this, you will need to interact with the interface that popped up earlier. 
 
 # Boba Recommendations
 
@@ -566,11 +571,11 @@ print(review_ids[0])
 
 We have all the reviews for each of the bubble tea places in New York City, but no way of actually deciding which to recommend. We _could_ look through them, one-by-one, and figure out which places are good, but that takes way too much time. To avoid that tedious process, we'll figure out that task using sentiment analysis. 
 
-Sentiment analysis uses computational tools to determine the emotional tone behind words. Python has a bunch of handy libraries for statistics and machine learning so in this post we’ll use Scikit-learn to learn how to add sentiment analysis to our applications. This isn’t a new concept. There are thousands of labeled datasets out there, labels varying from simple positive and negative to more complex systems that determine how positive or negative is a given text.
+Sentiment analysis uses computational tools to determine the emotional tone behind words. Python has a bunch of handy libraries for statistics and machine learning so in this post we'll use Scikit-learn to learn how to add sentiment analysis to our applications. This isn't a new concept. There are thousands of labeled datasets out there, labels varying from simple positive and negative to more complex systems that determine how positive or negative is a given text.
 
-In this tutorial we’ll use a pre-labeled dataset consisting of Amazon Reviews that are given a rating between 1-5. Using this data, we’ll build a model that assigns a food review a value of 1-5 with `sklearn`.
+In this tutorial we'll use a pre-labeled dataset consisting of Amazon Reviews that are given a rating between 1-5. Using this data, we'll build a model that assigns a food review a value of 1-5 with `sklearn`.
 
-`sklearn` is a Python module with built-in machine learning algorithms. In this tutorial, we’ll specifically use the Logistic Regression model, which is a linear model commonly used for classification.
+`sklearn` is a Python module with built-in machine learning algorithms. In this tutorial, we'll specifically use the Logistic Regression model, which is a linear model commonly used for classification.
 
 Using the file we created in part 1, `boba_final.csv` we'll pull the tips for each venue using the Foursquare API. Since we taked it as a csv file, we can use pandas once again to read in the data as a DataFrame. To use the foursquare API in Python, you'll need to call `foursquare.Foursquare()` with your API keys to connect to the client.  
 
@@ -585,7 +590,7 @@ First, we import all the needed modules:
 from sklearn.feature_extraction.text import TfidfVectorizer
 ```
 
-Next we'll import the data we’ll be working with. Each row in the csv file refers to a review. As we have done in past exercises, we will use `pandas` to read in the file. From there, we will select the two relevant columns for the classifier we will built soon. Below, you'll see two lists: one for the reviews and one for the ratings of 1-5. We chose this format so that we can check how accurate the model we build is. To do this, we test the classifier on unlabeled data since feeding in the labels, which you can think of as the “answers”, would be “cheating”. 
+Next we'll import the data we'll be working with. Each row in the csv file refers to a review. As we have done in past exercises, we will use `pandas` to read in the file. From there, we will select the two relevant columns for the classifier we will built soon. Below, you'll see two lists: one for the reviews and one for the ratings of 1-5. We chose this format so that we can check how accurate the model we build is. To do this, we test the classifier on unlabeled data since feeding in the labels, which you can think of as the "answers", would be "cheating". 
 
 
 ```python
@@ -594,7 +599,7 @@ data = list(test_data['Text'])
 data_labels = list(test_data['Score'])
 ```
 
-Next, we initialize a sckit-learn vector with the CountVectorizer class. Because the data could be in any format, we’ll set lowercase to False and exclude common words such as “the” or “and”. This vectorizer will transform our data into vectors of features. In this case, we use a CountVector, which means that our features are counts of the words that occur in our dataset. Once the CountVectorizer class is initialized, we fit it onto the data above and convert it to an array for easy usage.
+Next, we initialize a sckit-learn vector with the CountVectorizer class. Because the data could be in any format, we'll set lowercase to False and exclude common words such as "the" or "and". This vectorizer will transform our data into vectors of features. In this case, we use a CountVector, which means that our features are counts of the words that occur in our dataset. Once the CountVectorizer class is initialized, we fit it onto the data above and convert it to an array for easy usage.
 
 
 ```python
@@ -609,7 +614,7 @@ features = vectorizer.fit_transform(
 features_nd = features.toarray()
 ```
 
-As a final step, we’ll split the training data to get an evaluation set through Scikit-learn’s built-in cross_validation function. All we need to do is provide the data and assign a training percentage (in this case, 90%).
+As a final step, we'll split the training data to get an evaluation set through Scikit-learn's built-in cross_validation function. All we need to do is provide the data and assign a training percentage (in this case, 90%).
 
 
 ```python
@@ -628,7 +633,7 @@ X_train, X_test, y_train, y_test  = train_test_split(
 
 ## Linear Classifier
 
-We can now build the classifier for this dataset. As mentioned before, we’ll be using the LogisticRegression class from Scikit-learn, so we start there:
+We can now build the classifier for this dataset. As mentioned before, we'll be using the LogisticRegression class from Scikit-learn, so we start there:
 
 
 ```python
@@ -636,7 +641,7 @@ from sklearn.linear_model import LogisticRegression
 log_model = LogisticRegression()
 ```
 
-Once the model is initialized, we have to train it to our specific dataset, so we use Scikit-learn’s fit method to do so. This is where our machine learning classifier actually learns the underlying functions that produce our results.
+Once the model is initialized, we have to train it to our specific dataset, so we use Scikit-learn's fit method to do so. This is where our machine learning classifier actually learns the underlying functions that produce our results.
 
 
 ```python
@@ -652,9 +657,9 @@ y_pred = log_model.predict(X_test)
 
 ## Accuracy
 
-Now just for our own fun, let’s take a look at some of the classifications our model makes. We’ll choose a random set of tweets from our test data and then call our model on each. Your output may be different, but here’s the random set that my code generated:
+Now just for our own fun, let's take a look at some of the classifications our model makes. We'll choose a random set of tweets from our test data and then call our model on each. Your output may be different, but here's the random set that my code generated:
 
-Just glancing over the examples above, it’s pretty obvious there are some misclassifications. But we want to do more than just ‘eyeball’ the data, so let’s use Scikit-learn to calculate an accuracy score.
+Just glancing over the examples above, it's pretty obvious there are some misclassifications. But we want to do more than just 'eyeball' the data, so let's use Scikit-learn to calculate an accuracy score.
 
 After all, how can we trust a machine learning algorithm if we have no idea how it performs? This is why we left some of the dataset for testing purposes. In Scikit-learn, there is a function called sklearn.metrics.accuracy_score which calculates what percentage of tweets are classified correctly. Using this, we see that this model has an accuracy of about 61%.
 
@@ -667,7 +672,7 @@ print(accuracy_score(y_test, y_pred))
     0.699
 
 
-70% is better than randomly guessing (20% random guessing), but still fairly prone to error. With that said, we pulled this classifier together with fewer than 20 lines of code. Even though we don’t have the best results, `sckit-learn` provided us with a solid model that we can improve on if we change some of the parameters we saw throughout this post. For example, maybe the model needs less training data? Maybe we should have selected 80% of the data for training instead of 90%? Maybe we should have cleaned the data by checking for misspellings or taking out special characters.   
+70% is better than randomly guessing (20% random guessing), but still fairly prone to error. With that said, we pulled this classifier together with fewer than 20 lines of code. Even though we don't have the best results, `sckit-learn` provided us with a solid model that we can improve on if we change some of the parameters we saw throughout this post. For example, maybe the model needs less training data? Maybe we should have selected 80% of the data for training instead of 90%? Maybe we should have cleaned the data by checking for misspellings or taking out special characters.   
 
 
 ## Checkpoint 2
@@ -765,6 +770,8 @@ This is actually a good thing -- it will inform our recommendations more if we h
 full_ratings = reviews.groupby(['bus_ids', 'flavor']).rating.mean()
 ```
 
+So that we can use this more `pandas` functions later on, we convert this `groupby()` into a DataFrame and sort it by flavor first for organizational purposes. The second line of code here resets the indices so that we don't have them out of order.
+
 
 ```python
 full_ratings_df = pd.DataFrame(full_ratings).groupby(['flavor', 'bus_ids']).rating.mean()
@@ -792,10 +799,14 @@ Let's take a brief look at our results:
 print(recs)
 ```
 
+Now we are at the part we have all been waiting for! Boba Recommendations. My favorite boba flavor is **Matcha** so the example we will review is recommendations for matcha. We'll set this preference in a variable named `WHAT_DO_YOU_WANT`. 
+
 
 ```python
-WHAT_DO_YOU_WANT = "almond"
+WHAT_DO_YOU_WANT = "matcha"
 ```
+
+As you have seen before, we will now filter the DataFrame for boba places containing this flavor. Recall that filtering refers to the action of selecting rows based on a _conditional statement_.
 
 
 ```python
@@ -804,16 +815,85 @@ recs_df = recs[recs['flavor'] == WHAT_DO_YOU_WANT]
 
 
 ```python
-boba_places[boba_places['id'] == '4ac24eb2f964a520a09820e3']['Name']
+recs_df
 ```
 
 
 
 
-    47    Silk Road Cafe
-    Name: Name, dtype: object
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>flavor</th>
+      <th>bus_ids</th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>123</th>
+      <td>matcha</td>
+      <td>4a83505ef964a520bffa1fe3</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>matcha</td>
+      <td>565727c7498eb4078c560050</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>matcha</td>
+      <td>56d612c0498e1bd10360dca8</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>matcha</td>
+      <td>582f75cd9f25833ffdc95f26</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>matcha</td>
+      <td>58a4cf2e98f8aa3b35181410</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>matcha</td>
+      <td>58aca06476b8b276978f1732</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>matcha</td>
+      <td>58c95f4c2bc5e266eed6d80a</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
+
+In the DataFrame we created above, the `bus_ids` contains the ids of each boba place. We will use these business ids to print out the bubble tea places I should try!
 
 ## Checkpoint 4
 
@@ -834,7 +914,7 @@ text = " ".join(list(reviews[bus_ids == bus_ids[5]]['tip']))
       """Entry point for launching an IPython kernel.
 
 
-Python has a library [wordcloud](https://github.com/amueller/word_cloud) that provides functions to generate an image of our most frequent words in a given text. Using the string of every single title we’ve put together we can use wordcloud to create a wordcloud visualization.
+Python has a library [wordcloud](https://github.com/amueller/word_cloud) that provides functions to generate an image of our most frequent words in a given text. Using the string of every single title we've put together we can use wordcloud to create a wordcloud visualization.
 
 
 ```python
@@ -842,14 +922,14 @@ from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 ```
 
-Notice we also imported `STOPWORDS` from the `wordcloud` module. These are to keep from visualizing words like “the”, “and”, “or” from appearing in the wordcloud. Words like these will clearly occur frequently but provide no insight as to what topics we’re reading about. So the built-in set of stop words will be removed from the final wordcloud visualization:
+Notice we also imported `STOPWORDS` from the `wordcloud` module. These are to keep from visualizing words like "the", "and", "or" from appearing in the wordcloud. Words like these will clearly occur frequently but provide no insight as to what topics we're reading about. So the built-in set of stop words will be removed from the final wordcloud visualization:
 
 
 ```python
 stopwords = set(list(STOPWORDS) + boba_flavors + ["boba", "tea"])
 ```
 
-This might be hard to believe but now we can initialize the wordcloud object! This object is what represents the image we’ll use [matplotlib](https://matplotlib.org/) to output.
+This might be hard to believe but now we can initialize the wordcloud object! This object is what represents the image we'll use [matplotlib](https://matplotlib.org/) to output.
 
 
 ```python
@@ -870,7 +950,7 @@ wordcloud.generate(text)
 
 
 
-And finally we invoke matplotlib to display our image. For this example we won’t do any special customization but in case you’re interested in how to go about doing this [check the documentation](https://matplotlib.org/).
+And finally we invoke matplotlib to display our image. For this example we won't do any special customization but in case you're interested in how to go about doing this [check the documentation](https://matplotlib.org/).
 
 
 ```python
@@ -880,14 +960,29 @@ plt.show()
 ```
 
 
-![png](output_123_0.png)
+![png](output_129_0.png)
 
+
+## Checkpoint 5
+
+Some of the words that appear in the wordcloud are not very informative. For example, `latte` and `milk` do not really tell us more other than this boba place likely offers both. Manipulate the code so that we get a more representative visualization. 
+
+And that's a wrap! Over the past sections, you have reviewed a variety topics to help complete this boba themed challenge. 
+
+Let's quickly summarize what you learned:
+
+- How to use pandas and numpy in the context of a data science problem
+- Geospatial Mapping with geojsonio & shapely
+- How to use APIs through Google Maps & Foursquare
+- Sentiment Analysis with sklearn
+- Data Visualizations with WordCloud
 
 ### Acknowledgments 
 
 Curriculum Writer Lead: [Lesley Cordero](https://www.columbia.edu/~lc2958)<br>
-Curriculum Reviewers: [Andrew Aday](), [Alan Du]()
+Curriculum Reviewers: Andrew Aday
 
 A lot of this content was created originally for [Twilio's Blog](twilio.com/blog) and has been changed for the purposes of a curriculum that fits well together.
 
 If you're intersted in reading the original sources, you can find them [here](https://www.twilio.com/blog/2017/12/sentiment-analysis-scikit-learn.html) and [here](https://www.twilio.com/blog/2017/09/boba-python-google-maps-geojson.html). 
+
