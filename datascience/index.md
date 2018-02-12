@@ -980,7 +980,7 @@ Let's quickly summarize what you learned:
 ### Acknowledgments 
 
 Curriculum Writer Lead: [Lesley Cordero](https://www.columbia.edu/~lc2958)<br>
-Curriculum Reviewers: [Andrew Aday]()
+Curriculum Reviewers: Andrew Aday
 
 A lot of this content was created originally for [Twilio's Blog](twilio.com/blog) and has been changed for the purposes of a curriculum that fits well together.
 
