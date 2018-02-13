@@ -6,6 +6,7 @@ source: "https://github.com/adicu/data-science"
 ---
 
 
+
 # Getting Started
 
 ## What will I learn?
@@ -48,9 +49,9 @@ Lastly, there's the **"run cell"** button (3). Jupyter Notebook doesn't automati
 
 
 ```python
-google_cli = 'your-key'
-fs_id = 'your-key'
-fs_secret = 'your-key'
+google_cli = 'your-key-here'
+fs_id = 'your-key-here'
+fs_secret = 'your-key-here'
 ```
 
 # Background
@@ -196,8 +197,8 @@ pd.read_csv("./data/boba.csv").head()
     </tr>
     <tr>
       <th>4</th>
-      <td>BentOn Cafe</td>
-      <td>156 E 45th St, New York, NY 10017</td>
+      <td>Boba Guys</td>
+      <td>11 Waverly Pl, New York, NY 10002</td>
     </tr>
   </tbody>
 </table>
@@ -227,7 +228,7 @@ geocoder.google("2920 Broadway, New York, NY 10027")
 
 
 
-    <[OK] Google - Geocode [11 Waverly Pl, New York, NY 10003, USA]>
+    <[OK] Google - Geocode [Alfred Lerner Hall, 2920 Broadway, New York, NY 10027, USA]>
 
 
 
@@ -238,7 +239,11 @@ This geospatial object has multiple attributes you can utilize, which you can re
 geocoder.google("2920 Broadway, New York, NY 10027").lat
 ```
 
-    40.7301485
+
+
+
+    40.8069421
+
 
 
 
@@ -249,7 +254,7 @@ geocoder.google("2920 Broadway, New York, NY 10027").lng
 
 
 
-    -73.9940771
+    -73.9639939
 
 
 
@@ -280,7 +285,7 @@ class BubbleTea(object):
 
 The final step for this project is to visualize the geospatial data using `geojsonio`. But to use `geojsonio`, we need to convert the DataFrame above into geojson. Unfortunately it's not as straightforward because our original data was in a CSV format. Fortunately, we can convert this with a few lines of code. More specifically, we'll great three get methods for our `visualize()` function to work. 
 
-The first, `get_geo()` returns the coordinates as a list:
+The first, `get_geo()` returns the coordinates as a list. Because of our limits in API calls, `NaN` values are returned in some instances. This can lead to geojson parsing issues, so to avoid that, we remove these values with the very useful `dropna()` function and reset the indices. 
 
 
 ```python
@@ -299,13 +304,15 @@ class BubbleTea(object):
         self.boba['Lat'] = self.boba['Address'].apply(geocoder.google).apply(lambda x: x.lat)
         self.boba['Longitude'] = self.boba['Address'].apply(geocoder.google).apply(lambda x: x.lng)
         self.boba['Coordinates'] = [Point(xy) for xy in zip(self.boba.Longitude, self.boba.Lat)]
-
-    # new code below
+    
+    # new code here
     def get_geo(self):
+        self.boba = self.boba.dropna()
+        self.boba = self.boba.reset_index()
         return(list(self.boba['Coordinates']))
 ```
 
-`get_names()` returns the Name column as series. 
+`get_names()` returns the Name column as series so we're able to see labels for each bubble tea place on the map. As with the previous function, we need to drop the `NaN` values and reset the indices. 
 
 
 ```python
@@ -325,9 +332,10 @@ class BubbleTea(object):
         self.boba['Coordinates'] = [Point(xy) for xy in zip(self.boba.Longitude, self.boba.Lat)]
 
     def get_geo(self):
+        self.boba = self.boba.dropna()
+        self.boba = self.boba.reset_index()
         return(list(self.boba['Coordinates']))
-        
-        
+         
     # new code below
     def get_names(self):
         return(self.boba['Name'])
@@ -353,9 +361,13 @@ class BubbleTea(object):
         self.boba['Coordinates'] = [Point(xy) for xy in zip(self.boba.Longitude, self.boba.Lat)]
 
     def get_geo(self):
+        self.boba = self.boba.dropna()
+        self.boba = self.boba.reset_index()
         return(list(self.boba['Coordinates']))
         
     def get_names(self):
+        self.boba = self.boba.dropna()
+        self.boba = self.boba.reset_index()
         return(self.boba['Name'])
         
       
@@ -371,6 +383,7 @@ Great! Now let's use `geojsonio` for some boba fun! Now that we have all our hel
 ```python
 from geopandas import GeoDataFrame
 from geojsonio import display
+import pandas as pd
 
 class BubbleTea(object):
     
@@ -388,9 +401,13 @@ class BubbleTea(object):
         self.boba['Coordinates'] = [Point(xy) for xy in zip(self.boba.Longitude, self.boba.Lat)]
 
     def get_geo(self):
+        self.boba = self.boba.dropna()
+        self.boba = self.boba.reset_index()
         return(list(self.boba['Coordinates']))
         
     def get_names(self):
+        self.boba = self.boba.dropna()
+        self.boba = self.boba.reset_index()
         return(self.boba['Name'])
         
     def get_gdf(self):
@@ -563,7 +580,7 @@ print(format_tips[0])
 print(review_ids[0])
 ```
 
-    Come to Boba Guys and take the train to Strawberry Matcha heaven. 🍓🍵
+    Come to Boba Guys and take the train to Strawberry Matcha heaven. ððµ
     56d612c0498e1bd10360dca8
 
 
@@ -980,9 +997,8 @@ Let's quickly summarize what you learned:
 ### Acknowledgments 
 
 Curriculum Writer Lead: [Lesley Cordero](https://www.columbia.edu/~lc2958)<br>
-Curriculum Reviewers: Andrew Aday
+Curriculum Reviewers: [Andrew Aday]()
 
 A lot of this content was created originally for [Twilio's Blog](twilio.com/blog) and has been changed for the purposes of a curriculum that fits well together.
 
 If you're intersted in reading the original sources, you can find them [here](https://www.twilio.com/blog/2017/12/sentiment-analysis-scikit-learn.html) and [here](https://www.twilio.com/blog/2017/09/boba-python-google-maps-geojson.html). 
-
