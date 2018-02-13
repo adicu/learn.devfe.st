@@ -1,4 +1,3 @@
-
 ---
 layout: curriculum
 title: Data Science Track
