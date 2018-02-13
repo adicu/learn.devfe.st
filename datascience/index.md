@@ -5,8 +5,6 @@ tagline: Learn to make meaningful observations about data sets using Python.
 source: "https://github.com/adicu/data-science"
 ---
 
-
-
 # Getting Started
 
 ## What will I learn?
