@@ -5,6 +5,7 @@ tagline: Learn to make meaningful observations about data sets using Python.
 source: "https://github.com/adicu/data-science"
 ---
 
+
 # Getting Started
 
 ## What will I learn?
@@ -14,25 +15,26 @@ We'll cover the fundamentals of data science through an in-depth exercise on a f
 
 ## What do I need to get started?
 
-But before we even get started, we have to set our environment up. This guide was written in Python 3.6. If you haven't already, download [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installing/). Once you have Python and Pip installed, clone [this repo](https://github.com/adicu/data-science) using Git as follows:
+But before we even get started, we have to set our environment up. If you're a windows user, ideally you should refer to [this guide](https://github.com/blackfish/windows101/blob/master/Setting%20Up%20Windows%20for%20Programming.ipynb). This guide was written in Python 3.6. If you haven't already, download [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installing/). Additionally, you will need to install [git](https://git-scm.com/downloads) so that you can use GitHub. Git & GitHub work for version control, which means that you can create checkpoints of your code. This makes collaboration much easier and ensures that you always have a copy of your code. 
+
+Once you have Python, Pip, and Git installed, open up your terminal or command prompt and clone [this repo](https://github.com/adicu/data-science) using Git as shown below. What cloning does is make a copy of the folder the third parameter is pointing to. In this case, that's a GitHub repo.   
 
 ```
 git clone https://github.com/adicu/data-science
 ```
 
-
-Next, youâll need to install several packages that weâll use throughout this tutorial on the command line in our project directory:
+Once again in your terminal/command prompt, youâll need to install several packages that weâll use throughout this tutorial on the command line in our project directory:
 
 ```
 pip install -r requirements.txt
 ```
 
-We'll be using the [Google Maps](https://developers.google.com/maps/documentation/geocoding/get-api-key) and [Foursquare](https://developer.foursquare.com/docs/api/getting-started) APIs, so make sure to generate your API keys. Since weâll be working with Python throughout, using the [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/install.html) is the best way to get the most out of this tutorial. Once you have your notebook up and running, you can download all the data for this post from [GitHub](https://github.com/adicu/devfest-data-science). Make sure you have the data in the same directory as your notebook and then weâre good to go! 
+We'll be using the [Google Maps](https://developers.google.com/maps/documentation/geocoding/get-api-key) and [Foursquare](https://developer.foursquare.com/docs/api/getting-started) APIs, so make sure to generate your API keys. Since weâll be working with Python throughout, using the [Jupyter Notebook](http://jupyter.readthedocs.io/en/latest/install.html) is the best way to get the most out of this tutorial. Once you have your notebook up and running, you can now use the data for this tutorial! Just make sure you have the data in the same directory as your notebook and then weâre good to go! 
 
 
 ## A Quick Note on Jupyter
 
-For those of you who are unfamiliar with Jupyter notebooks, Iâve provided a brief review of which functions will be particularly useful to move along with this tutorial.
+For those of you who are unfamiliar with Jupyter notebooks, I have provided a brief review of which functions will be particularly useful to move along with this tutorial.
 
 In the image below, youâll see three buttons labeled 1-3 that will be important for you to get a grasp of -- the save button (1), add cell button (2), and run cell button (3). 
 
