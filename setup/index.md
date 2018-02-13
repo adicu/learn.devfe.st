@@ -39,31 +39,27 @@ Your system has a preinstalled version of python that we have limited control ov
 In order to download and maintain our own version of python, we are going to use the Homebrew package manager for Mac-OSX.
 
 1. Install homebrew by running the following command and following the printed instructions. This step should take a few minutes to complete.
+```
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
-    ```
-    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    ```
-
-2. Update your brew references:
-    
-    ```
-    $ brew update
-    ```
+2. Update your brew references:  
+```
+$ brew update
+```
 
 3. Install python 3
-    
-    ```
-    $ brew install python3
-    ```
+```
+$ brew install python3
+```
 
-4. Test to see if your output matches the below lines!
-    
-    ```
-    $ python3  --version
-    Python 3.6.4
-    $ which python3
-    /usr/local/bin/python3
-    ```
+4. Test to see if your output matches the below lines! 
+```
+$ python3  --version
+Python 3.6.4
+$ which python3
+/usr/local/bin/python3
+```
 If you got to this step then your python has been installed correctly!
 
 ### 2. The Virtual Environment
@@ -110,7 +106,6 @@ $ python3 -m venv my_venv
 This will create a folder called `my_venv` which contains all that you need to run your isolated python environment.
 
 3. **SUPER IMPORTANT: ACTIVATING YOUR VIRTUALENV** You need to activate your virtualenv **each** time that you want to use it. Navigate to the directory that contains `my_venv`:
-
 ```
 $ ls
 my_venv
@@ -118,7 +113,6 @@ $ source my_venv/bin/activate
 ```
 You should commit the `source my_venv/bin/activate` command to memory. We'll be using it *every* time we do any coding.
 If all goes well, you should see that the name of your virtualenv (in this case `my_venv`) has been prepended to your terminal output. It should look something like below:
-
 ```
 (my_venv) $
 ```
@@ -135,7 +129,6 @@ If all goes well, you should see that the name of your virtualenv (in this case 
 Libraries are so crucial to the python language that there is a specific software, known as a **package manager** that helps developers install, organize, and maintain their libraries. We call this  tool `pip`. We will start by downloading and installing our most important library, the `flask` web development package.
 
 1. Installing with pip is extremely easy - simply use `pip install <name_of_package>`. Make sure that you are in your virtualenv!
-
 ```
 (my_venv) $ pip install flask
 ```
@@ -161,7 +154,6 @@ If you followed all of the previous steps without error, you should be able to r
 1. Make sure that your virtualenv is activated (remember: `$ source bin/activate`)
 
 2. Copy and paste the following code into a file and save it . If you don't know how to do this, download [an editor](#editors), copy the code into a file and save it in the same folder as your virutalenv. (don't worry if you don't understand what's going on in the code - we'll be going into granular detail in the coming weeks!):
-
 ```python
 from flask import Flask
 app = Flask(__name__)
@@ -175,7 +167,6 @@ if __name__ == "__main__":
 ```
 
 3. Save the file as `app.py` in `$ACACDEMY` and run `python app.py`. You should see:
-
 ```
 (my_venv) $ python app.py
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
@@ -200,14 +191,13 @@ _At the time of this writing, [Python 3.6.4](https://www.python.org/downloads/re
 Download the executable installer and click on ENABLE PATH VARIABLE. Make sure this is checked!
 
 * Verify a successful installation by opening a command prompt window typing the following commands.
-    
-    ```
-    Microsoft Windows [Version 6.2.9200]
-    (c) 2012 Microsoft Corporation. All rights reserved.
+```
+Microsoft Windows [Version 6.2.9200]
+(c) 2012 Microsoft Corporation. All rights reserved.
 
-    C:\Users\Username>python --version
-    Python 3.6.4
-    ```
+C:\Users\Username>python --version
+Python 3.6.4
+```
 
 ### 2. pip for Windows
 pip is the official package manager for python and allows you to install and manage third-party extensions to python. As we use python more and more, this tool becomes invaluable and you should spend some time playing around with it to see how it works. Pip is automatically installed with Python3.
@@ -261,7 +251,6 @@ my_venv
 ```
 You should commit the `.\Scripts\activate` command to memory. We'll be using it *every* time we do any coding.
 If all goes well, you should see that the name of your virtualenv (in this case `my_venv`) has been prepended to your terminal output. It should look something like below:
-
 ```
 (my_venv) $
 ```
@@ -319,41 +308,35 @@ On windows, simply delete the Anaconda folder from your computer or use the syst
 If you need to use the scientific resources provided by Anaconda in the future, and want to keep the software on your computer, you can still use flask! Follow the installation steps below.
 
 1. Python should be already be installed on your computer from the Anaconda environment. If you type the `python3` command in your command line (terminal for mac or command prompt for windows), you should see something like the following:
-
-	```
-	$ python3
-	Python 3.6.3 |Anaconda, Inc.| (default, Oct 6 2017, 12:04:38)
-	[GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)] on darwin
-	Type "help", "copyright", "credits" or "license" for more information.
-	```
+```
+$ python3
+Python 3.6.3 |Anaconda, Inc.| (default, Oct 6 2017, 12:04:38)
+[GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+```
 	
-	Note that the distributor for your python is `Anaconda, Inc.` instead of the default mac distribution. Enter `ctrl-c` to exit out of your python shell.
+Note that the distributor for your python is `Anaconda, Inc.` instead of the default mac distribution. Enter `ctrl-c` to exit out of your python shell.
 
 2. Create your virtual environment. **IMPORTANT:** Please read the explanation of why we use virtual environments [here](#2-the-virtual-environment).
-
-	```
-	$ conda create -n my_venv
-	```
+```
+$ conda create -n my_venv
+```
 
 Follow the on-screen prompts.
 
 3. Every time that you want to code in flask, you must first activate your virtual environment. Commit the next line of instruction to memory - you'll be seeing it over and over again!
-
-	```
-	$ source activate my_venv
-	```
-
-	When you want to leave your conda virtual environment, you need to use the following command:
- 	
- 	```
-	$ source deactivate
-	```
+```
+$ source activate my_venv
+```
+When you want to leave your conda virtual environment, you need to use the following command:
+```
+$ source deactivate
+```
 
 4. Once you are in your virtual environment, you should see that the front of your terminal prompt shows the name of the environment in parentheses (e.g. `(my_venv) MY_NAME $`). Make sure you look for this whenever you want to be in a virtual environment. We now install the flask packages. Type the following command to install flask into your virtual environment.
-
-	```
-	conda install flask
-	```
+```
+conda install flask
+```
 
 Follow the on screen prompts and proceed to [testing](#4-testing).
 
