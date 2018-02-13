@@ -39,22 +39,21 @@ Your system has a preinstalled version of python that we have limited control ov
 In order to download and maintain our own version of python, we are going to use the Homebrew package manager for Mac-OSX.
 
 1. Install homebrew by running the following command and following the printed instructions. This step should take a few minutes to complete.
-```
+```shell
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-
 2. Update your brew references:  
-```
+```shell
 $ brew update
 ```
 
 3. Install python 3
-```
+```shell
 $ brew install python3
 ```
 
 4. Test to see if your output matches the below lines! 
-```
+```shell
 $ python3  --version
 Python 3.6.4
 $ which python3
@@ -76,18 +75,18 @@ The main use of an isolated environment is to give you a clean set of python lib
 **NOTE:** If you are not familiar with the Command Line, there are just a few commands that you need to be familiar with:
 
 a. `cd`: `cd` stands for "change directory". It allows you to navigate to a different folder (or directory) in your computer.
-```
+```shell
 Academys-Macbook-Pro:~ academy$ cd Desktop
 Academys-Macbook-Pro:~/Desktop academy$
 ```
 b. `ls`: `ls` lists the contents of the current directory. This allows you to see which directories you can navigate to.
-```
+```shell
 Academys-Macbook-Pro:~ academy$ ls
 Desktop        Downloads      Movies        Pictures
 Documents      Library        Music         Public
 ```
 c. `mkdir`: `mkdir` is short for "make directory" and makes a directory with the name you supply.
-```
+```shell
 Academys-Macbook-Pro:~ academy$ mkdir Academy
 Academys-Macbook-Pro:~ academy$ ls
 Academy        Documents      Library       Music          Public
@@ -155,17 +154,16 @@ If you followed all of the previous steps without error, you should be able to r
 
 2. Copy and paste the following code into a file and save it . If you don't know how to do this, download [an editor](#editors), copy the code into a file and save it in the same folder as your virutalenv. (don't worry if you don't understand what's going on in the code - we'll be going into granular detail in the coming weeks!):
 ```python
-from flask import Flask
-app = Flask(__name__)
+  from flask import Flask
+  app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return "Hello World!"
+  @app.route('/')
+  def index():
+      return "Hello World!"
 
-if __name__ == "__main__":
-	app.run()
+  if __name__ == "__main__":
+      app.run()
 ```
-
 3. Save the file as `app.py` in `$ACACDEMY` and run `python app.py`. You should see:
 ```
 (my_venv) $ python app.py
@@ -192,11 +190,11 @@ Download the executable installer and click on ENABLE PATH VARIABLE. Make sure t
 
 * Verify a successful installation by opening a command prompt window typing the following commands.
 ```
-Microsoft Windows [Version 6.2.9200]
-(c) 2012 Microsoft Corporation. All rights reserved.
+  Microsoft Windows [Version 6.2.9200]
+  (c) 2012 Microsoft Corporation. All rights reserved.
 
-C:\Users\Username>python --version
-Python 3.6.4
+  C:\Users\Username>python --version
+  Python 3.6.4
 ```
 
 ### 2. pip for Windows
