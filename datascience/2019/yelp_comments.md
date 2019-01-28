@@ -4,7 +4,7 @@ title: Devfest Data Science Track 2019
 source: "https://github.com/Siaan/data-science-2019"
 ---
 
-To run this without any environment setup, go [here](https://mybinder.org/v2/gh/Siaan/data-science-2019/master?filepath=yelp_comments.ipynb).
+To run this without any environment setup, go [here](https://mybinder.org/v2/gh/Siaan/data-science-2019/master?filepath=yelp_comments.ipynb) (this might take a minute or so to load).
 
 Requirements for this track: Basic knowledge of Python.
 
