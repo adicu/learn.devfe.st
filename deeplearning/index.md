@@ -90,12 +90,14 @@ This update rule pushes the hyperplane closer to any point misclassified by the 
 #### Simplifying out $b$
 You'll notice we omitted any mention of the bias term $b$ in the update rule. For simplicity, linear models often append the bias term to the weight vector $w$. Appending $1$ to an input point $x$ lets us effectively compute the bias term using our dot product:
 
+$$
 \begin{align*}
 w := \begin{bmatrix}w_0\\w_1\\ \vdots \\ w_n \end{bmatrix} \quad x := \begin{bmatrix} x_0\\x_1\\ \vdots \\ x_n\end{bmatrix} & \quad \quad \quad
 w' := \begin{bmatrix}w_0\\w_1\\ \vdots \\ w_n \\ b \end{bmatrix} \quad x' := \begin{bmatrix} x_0\\x_1\\ \vdots \\ x_n \\ 1\end{bmatrix} \\ \\
 \langle w', x' \rangle &= w_0 x_0 + w_1 x_1 + \dots + w_n x_n + b(1) \\
 &= \langle w, x \rangle + b
 \end{align*}
+$$
 
 
 ### Psuedocode
@@ -201,12 +203,14 @@ plot_points(X, Y, ax, c_pos='y', c_neg='y')
 
 But linear models have limitations. In the 1980s the perceptron algorithm represented the state-of-the-art in deep learning, but it can't learn the XOR function:
 
+$$
 \begin{align*}
 f\big([0,1], w\big) &= 1 \\
 f\big([1,0], w\big) &= 1 \\
 f\big([1,1], w\big) &= 0 \\
 f\big([0,0], w\big) &= 0
 \end{align*}
+$$
 
 Limitations like these resulted in the first AI winter.
 
@@ -256,16 +260,23 @@ plt.legend();
 
 
 ### Hyperbolic tangent
+
+$$
 \begin{align*}
 tanh(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}}
 \end{align*}
+$$
+
 The _tanh_ non-linearity also takes an input $x \in \mathbb{R}$ and squashes it into an output $ -1 \leq \sigma(x) \leq 1$. Like the logistic sigmoid,  _tanh_ saturates at extreme values of $x$. Unlike the logistic sigmoid, the _tanh_ function is centered at $0$. This makes sense because the _tanh_ function is actually just a scaled sigmoid:
+
+$$
 \begin{align*}
 tanh(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}} \\
 &= \frac{1-e^{-2x}}{1+e^{-2x}} \\
 &= \frac{2}{1+e^{-2x}}-1 \\
 &= 2\sigma(2x)-1
 \end{align*}
+$$
 
 
 ```python
